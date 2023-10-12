@@ -1,3 +1,50 @@
 from django.db import models
 
-# Create your models here.
+from modelcluster.fields import ParentalKey
+from wagtail.models import Page, Orderable
+from wagtail.fields import RichTextField
+from wagtail.admin.panels import FieldPanel, InlinePanel
+
+from wagtail.search import index
+
+
+
+class BlogPage(Page):
+    date = models.DateField("Post date")
+    intro = models.CharField(max_length=250)
+    body = RichTextField(blank=True)
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('date'),
+        FieldPanel('intro'),
+        FieldPanel('body'),
+        InlinePanel('gallery_images', label="Gallery images"),
+    ]
+
+    def get_shortened_body(self, char_count=200):
+        """
+        Return a shortened version of the body content.
+        """
+        return self.body[:char_count]
+
+
+
+class BlogGalleryImage(Orderable):
+    page = ParentalKey(BlogPage, on_delete=models.CASCADE, related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
+    name = models.CharField(blank=True, max_length=50)
+    
+
+    panels = [
+        FieldPanel('image'),
+        FieldPanel('caption'),
+        FieldPanel('name'),
+    ]
