@@ -1,46 +1,314 @@
 {% load static wagtailcore_tags wagtailuserbar %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>
-            {% block title %}
-            {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
-            {% endblock %}
-            {% block title_suffix %}
-            {% wagtail_site as current_site %}
-            {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
-            {% endblock %}
-        </title>
-        {% if page.search_description %}
-        <meta name="description" content="{{ page.search_description }}" />
-        {% endif %}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CarHub - Auto Mechanic & Car Service Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {# Force all links in the live preview panel to be opened in a new tab #}
-        {% if request.in_preview_panel %}
-        <base target="_blank">
-        {% endif %}
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/bootstrap.min.css' %}">
+   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mysite.css' %}">
+    <link rel="stylesheet" href="{% static 'garage/group_one.css/responsive.css' %}">
+</head>
+<body>
 
-        {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/mysite.css' %}">
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="loading-center">
+            <div class="loader">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader-end -->
+    <!-- Scroll-top -->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <i class="fa fa-angle-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+    <!--header-start-->
+    <header class="header-one">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="header-top-contact">
+                            <ul>
+                                <li><a href="tel:+1(817)9013377"><i class="fa fa-phone"></i> +1 (817) 901 3377</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i> 4500 Mercantile plaza,  TX, 76137, USA</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="socialclick"><i class="fa fa-ellipsis-v"></i></span>
+                    <div class="col-md-5">
+                        
+                        <div class="header-top-right">
+                            <ul>
+                                <li><a href="#" class="facebook"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="#" class="twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        {% block extra_css %}
-        {# Override this in templates to add extra stylesheets #}
+        <div id="sticky-header" class="main-header menu-area">
+            <div class="container custom-container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mobile-nav-toggler"><i class="fa fa-bars"></i></div>
+                        <div class="menu-wrap">
+                            <nav class="menu-nav">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/header-logo.png" alt=""></a>
+                                </div>
+                                <div class="navbar-wrap main-menu d-none d-lg-flex">
+                                    <ul class="navigation">
+                                        <li class="active menu-item-has-children">
+                                            <a href="javascript:void(0)">Home</a>
+                                            <ul class="submenu">
+                                                <li><a href="index.html">Home One</a></li>
+                                                <li><a href="home-2.html">Home Two</a></li>
+                                            </ul>                                       
+                                        </li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="services.html">Services</a></li>
+                                        <li class="menu-item-has-children">
+                                            <a href="javascript:void(0)">Pages</a>
+                                            <ul class="submenu">
+                                                <li><a href="multi-header.html">Multi Type Header</a></li>
+                                                <li><a href="multi-footer.html">Multi Type Footer</a></li>
+                                                <li><a href="typography.html">Typography</a></li>
+                                            </ul>
+
+                                        </li>
+                                        <li><a href="blogs.html">Blogs</a></li>
+                                        <li><a href="contact.html">contacts</a></li>
+                                    </ul>
+                                </div>
+                                <div class="header-action d-none d-md-block">
+                                    <ul>
+                                        <li class="header-btn">
+                                            <a href="contact.html" class="btn upcase">
+                                                Free Consulting <i class="fa fa-arrow-right"></i>
+                                                <span></span>
+                                            </a>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <!-- Mobile Menu  -->
+                        <div class="mobile-menu">
+                            <nav class="menu-box">
+                                <div class="close-btn"><i class="fa fa-times"></i></div>
+                                <div class="nav-logo">
+                                    <a href="index.html"><img src="images/header-logo.png" alt="" title=""></a>
+                                </div>
+                                <div class="menu-outer">
+
+                                </div>
+                                <div class="social-links">
+                                    <ul class="clearfix">
+                                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                        <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
+                                        <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
+                                        <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                                        <li><a href="#"><span class="fa fa-youtube"></span></a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="menu-backdrop"></div>
+                        <!-- End Mobile Menu -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header-end -->
+    <main>
+        {% block content %}
+
         {% endblock %}
-    </head>
+    </main>
+    
 
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
+    <footer class="one-footer mt-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="contact-btn">
+                        <h2>
+                            Get Premium Auto Car Service Feel<br> Free To Contact Us.
+                        </h2>
+                        <a href="#" class="btn blue-btn">
+                            Contact With Us <i class="fa fa-arrow-right"></i>
+                            <span style="top: 176.578px; left: 137.5px;"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pt-50 pb-50">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="footer-cont footer-logo">
+                        <span class="logo-f mar-top">
+                            <a href="#">
+                                <img src="images/footer-logo.png" alt="" />
+                            </a>
+                        </span>
+                        <p>Welcome to our business consulting company. Lorem ipsum simply free text dolor sited amet cons cing elit.</p>
+                        <ul class="social-m-footer">
+                            <li><a href="#" class="facebook"><i class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="#" class="twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-cont footer-logo mt-20">
+                        <h3>Explore</h3>
+                        <ul class="menu-footer wi-50">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Meet Our Team</a></li>
+                            <li><a href="#">Our Portfolio</a></li>
+                            <li><a href="#">Latest News</a></li>
+                            <li><a href="#">Contact</a></li>
 
-        {% block content %}{% endblock %}
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms Of Use</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-cont footer-logo mt-20">
+                        <h3>Contact</h3>
+                        <ul class="menu-footer wi-100">
+                            <li><span><i class="fa fa-map-marker"></i></span> 4500 Mercantile plaza, Suite 300, Fort Worth, TX, 76137, USA</li>
+                            <li><span><i class="fa fa-phone"></i></span> +1 (817) 901 3377</li>
+                            <li><span><i class="fa fa-envelope-o"></i></span> info@example.com</li>
+                        </ul>
 
-        {% block extra_js %}
-        {# Override this in templates to add extra javascript #}
-        {% endblock %}
-    </body>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-cont footer-logo mt-20">
+                        <div id="resultsubscription">
+                                <span class="seccess1" style="color:#ffffff">Mail Sent. Thank you, we will contact you shortly.</span>
+                                <span class="error1" style="color:#ffffff">Mail was not Sent.</span>
+                            </div>
+                        <h3>Newsletter</h3>
+                        <div class="news-f">
+                            <form id="my-form-newsletter" action="subscribe.php" method="post"  class="form-event">
+                                <input type="email" name="email" placeholder="Email" class="fill form-control" />
+                                <button class="btn upcase" type="submit" name="submitnewsletter"><i class="fa fa-envelope"></i></button>
+                            </form>
+                        </div>
+                        <p>Sign up for our latest news & articles. We won’t give you spam mails.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copy-one">
+                        <p>© copyright <script type="text/javascript">var year = new Date(); document.write(year.getFullYear());</script> by <a href="#">Example.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- JS here -->
+
+    <script src="{% static 'garage/group_one.js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'garage/group_one.js/bootstrap.min.js' %}"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>-->
+    <script src="{% static 'garage/group_one.js/isotope.pkgd.min.js' %}"></script>    
+    <script src="{% static 'garage/group_one.js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'garage/group_one.js/owl.carousel.min.js' %}"></script>
+
+    <script src="{% static 'garage/group_one.js/swiper.min.js' %}"></script>
+    <script src="{% static 'js/mysite.js' %}"></script>
+    <!--font-awesome-->
+    <script src="https://kit.fontawesome.com/3f76ded15e.js" crossorigin="anonymous"></script>
+    <script>
+            var x = document.getElementById("result");
+            var currentLocation = window.location;
+
+            //var url_string = "http://localhost/baby/newform.html?seccess=1"; //window.location.href
+            var url = new URL(currentLocation);
+            var seccess = url.searchParams.get("seccess");
+            var error = url.searchParams.get("fail");
+
+            if (seccess == 1) {
+                $(".seccess").show();
+                $(".error").hide();
+            }
+            else if (error == 1) {
+                $(".seccess").hide();
+                $(".error").show();
+            }
+            else {
+                $(".seccess").hide();
+                $(".error").hide();
+                //document.getElementById("resultmm").style.display = "none";
+            }
+
+        </script>
+
+    <script>
+        var x = document.getElementById("resultsubscription");
+        var currentLocation1 = window.location;
+
+        //var url_string = "http://localhost/baby/newform.html?seccess=1"; //window.location.href
+        var url = new URL(currentLocation1);
+        var seccess1 = url.searchParams.get("successreq");
+        var error1 = url.searchParams.get("failreq");
+
+        if (seccess1 == 1) {
+            $(".seccess1").show();
+            $(".error1").hide();
+        }
+        else if (error1 == 1) {
+            $(".seccess1").hide();
+            $(".error1").show();
+        }
+        else {
+            $(".seccess1").hide();
+            $(".error1").hide();
+            //document.getElementById("resultmm").style.display = "none";
+        }
+
+    </script>
+
+
+</body>
 </html>
