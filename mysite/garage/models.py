@@ -8,7 +8,7 @@ from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.search import index
 
 
-
+# blog page, handles blogs
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
@@ -33,7 +33,7 @@ class BlogPage(Page):
         return self.body[:char_count]
 
 
-
+# Orderable Page
 class BlogGalleryImage(Orderable):
     page = ParentalKey(BlogPage, on_delete=models.CASCADE, related_name='gallery_images')
     image = models.ForeignKey(
@@ -48,3 +48,4 @@ class BlogGalleryImage(Orderable):
         FieldPanel('caption'),
         FieldPanel('name'),
     ]
+    

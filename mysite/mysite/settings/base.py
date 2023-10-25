@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    "quote_request",
     "garage",
     "home",
     "search",
@@ -166,5 +167,5 @@ WAGTAILSEARCH_BACKENDS = {
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
 
-LOGIN_REDIRECT_URL = '/home'
+#LOGIN_REDIRECT_URL = '/home'
 

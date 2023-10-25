@@ -16,7 +16,7 @@ urlpatterns = [
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
 
-    # Add a URL pattern to redirect the root URL to '/home/'
+    # URL pattern to redirect the root URL to '/home/'
     path('', RedirectView.as_view(url='/home/', permanent=False)),
 ]
 
