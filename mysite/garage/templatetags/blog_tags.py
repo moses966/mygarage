@@ -1,16 +1,40 @@
 from django import template
-from garage.models import BlogPage
+from garage.models import Tag, BlogCategory
 
 # template library to register custom template tags
 register = template.Library()
 
 
-@register.simple_tag
-def display_blog_images(name):
-    # Retrieve the first live BlogPage instance.
-    blog_page = BlogPage.objects.live().first()
-    
-    # Find the image with the specified title.
-    image = blog_page.gallery_images.filter(name=name).first()
-    # Return the found image, which can be displayed in the template.
-    return image
+@register.inclusion_tag("components/main_categories.html", takes_context=True)
+def category_list (context):
+    categories = BlogCategory.objects.all()
+    return {
+        "request":context["request"],
+        "categories":categories
+    }
+
+@register.inclusion_tag ("components/main_tags.html", takes_context=True)
+def tag_list(context):
+    tags = Tag.objects.all()
+    return {
+        "request":context["request"],
+        "tags":tags
+    }
+
+@register.inclusion_tag("components/post_tags.html",takes_context=True)
+def post_tag_list(context):
+    page = context["page"]
+    post_tags = page.tags.all()
+    return {
+        "request":context["request"],
+        "post_tags":post_tags
+    }
+
+@register.inclusion_tag ("components/post_categories.html", takes_context=True)
+def post_categories_list (context):
+    page = context["page"]
+    post_categories = page.categories.all()
+    return {
+        "request":context["request"],
+        "post_categories":post_categories
+    }

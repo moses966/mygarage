@@ -24,6 +24,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    "wagtail.contrib.routable_page",
+    "shared",
     "quote_request",
     "garage",
     "home",
@@ -75,6 +77,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "shared.utils.context_processors.form_data",
             ],
         },
     },

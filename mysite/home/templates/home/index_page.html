@@ -66,12 +66,10 @@
                         <span class="cricle alltuchtopdown"></span>
                     
                         <!-- Accessing the first image in the gallery -->
-                        
-                        {% display_blog_images "tester" as blog_image %}
-                          {% if blog_image %}   
-                              {% image blog_image.image scale-100 %}
-                          {% endif %}
-
+                      {#  {% display_blog_images "tester" as blog_image %} #}
+                         {# {% if blog_image %}   #}
+                            {#  {% image blog_image.image scale-100 %} #}
+                         {# {% endif %} #}
 
     
                         <div class="min-bg alltuchtopdown">
@@ -407,7 +405,7 @@
         </div>
     </div>
     <!-- How It Work-End -->
-    <!-- Testimonials-Start -->
+    <!-- Testimonials-Start 
     <div class="Testimonials home-test pt-90 pb-60">
         <div class="container">
             <div class="row">
@@ -543,7 +541,8 @@
             </div>
         </div>
     </div>
-    <!-- Testimonials-End -->
+     Testimonials-End -->
+
     <!-- Blog-Start -->
     <div class="Blog-section pt-90 pb-60">
         <div class="container">
@@ -653,36 +652,34 @@
                             <p>
                                 Complete control over products allows us to ensure our customers receive the best quality prices and service.
                             </p>
-                            
-                            <form id="my-form" action="contact-home.php" method="post"  class="form-re">
+                            <!--form fields-->
+                            {% if form_data %}
+                            <form id="my-form" action="{% pageurl form_data %}" method="post"  class="form-re">
+                                {% csrf_token %}
                                 <div class=" row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" placeholder="Name" name="name"  class="form-control" />
+                                            <input type="text" placeholder="Name" name="{{ form.name.name }}"  class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" placeholder="Email" name="email" class="form-control" />
+                                            <input type="text" placeholder="Email" name="{{ form.email.name }}" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class=" row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" placeholder="Phone" name="phone" class="form-control" />
+                                            <input type="text" placeholder="Phone" name="{{ form.phone.name }}" class="form-control" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Your Industry" name="industry" class="form-control" />
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class=" row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <textarea placeholder="Additional Details!" name="message" class="form-control"></textarea>
+                                            <textarea placeholder="Additional Details!" name="{{ form.message.name }}" class="form-control"></textarea>
                                         </div>
                                     </div>
 
@@ -701,12 +698,14 @@
                                 </div>
 
                             </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Request A Quote-End -->
 
     <script>

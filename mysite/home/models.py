@@ -5,7 +5,10 @@ from modelcluster.fields import ParentalKey
 
 from wagtail.models import Page, Orderable
 from wagtail.fields import RichTextField
-from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.admin.panels import (
+    FieldPanel,
+    InlinePanel,
+)
 
 # HomePage model representing the root page of the website
 class HomePage(Page):
@@ -19,6 +22,8 @@ class IndexPage(Page):
         FieldPanel('body'),
         InlinePanel('gallery_image', label="Gallery images"),
     ]
+
+    
 # Orderable model
 class HomeGalleryImage(Orderable):
     page = ParentalKey(IndexPage, on_delete=models.CASCADE, related_name='gallery_image')
