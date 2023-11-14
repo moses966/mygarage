@@ -7,7 +7,8 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from wagtail.fields import StreamField
 from wagtail import blocks
-from wagtail.images.blocks import ImageChooserBlock
+
+from .blocks import ParagraphWithImageBlock
 
 
 
@@ -24,11 +25,10 @@ class PostPage (Page):
     body = StreamField([
     ('heading', blocks.CharBlock(form_classname="title")),
     ('published_at', blocks.DateBlock(required='True')),
+    ('paragraph_with_image', ParagraphWithImageBlock()),
     ('paragraph', blocks.RichTextBlock()),
-    ('image', ImageChooserBlock()),
     ], block_counts={
         'heading': {'min_num': 1},
-        'image': {'max_num': 5},
     }, use_json_field=True)
     content_panels = Page.content_panels + [
         FieldPanel("header_image"),
