@@ -35,44 +35,32 @@
                         <div class="row mb-30">
                             <div class="col-md-10">
                                 <div class="heading-blog-top">
-                                   
-                                      <h1>{{ page.title }}</h1>
-                                      
-                                      <!-- Display header image if available -->
-                                      {% if page.header_image %}
-                                        <img src="{{ page.header_image.url }}" alt="{{ page.header_image.alt }}" />
-                                      {% endif %}
-                                    
-                                      <!-- Iterate through StreamField blocks -->
-                                      {% for block in page.body %}
-                                        {% if block.block_type == 'paragraph_with_image' %}
-                                          <div>{{ block.value|richtext }}</div>
-                                          <!-- Display image block after the first paragraph -->
-                                          {% if forloop.first %}
-                                            {% for image_block in page.body %}
-                                              {% if image_block.block_type == 'image' %}
-                                                <img src="{{ image_block.value.url }}" alt="{{ image_block.value.alt }}" />
-                                                <!-- You can customize the image styling as needed -->
-                                              {% endif %}
-                                            {% endfor %}
-                                          {% endif %}
-                                        {% endif %}
-                                      {% endfor %}
-                                    
-                                      <!-- Additional content goes here -->
-                                    
-                                   
-                                    
+                                    <span>
+                                        Articel Details
+                                    </span>
+                                    {% for block in page.body %}
+                                    {% if block.block_type == 'heading' %}
+                                    <h3>
+                                       {{ block.value }}
+                                    </h3>
+                                    {% elif block.block_type == 'paragraph1' %}
+                                    <p>
+                                        {{ block.value }}
+                                    </p>
+                                    {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="min-side-right">
                                     <div class="blog-date">
+                                        {% for block in page.body %}
+                                        {% if block.block_type == 'published_at' %}
                                         <span>
-                                            24th 
-                                            March
-                                            2019
+                                            {{ block.value }}
                                         </span>
+                                        {% endif %}
+                                        {% endfor %}
                                     </div>
                                     <div class="share-blog">
                                         <ul>
@@ -83,7 +71,7 @@
                                                 <a href="#" class="Instagram share-b">Instagram</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="Twitter share-b">X</a>
+                                                <a href="#" class="Twitter share-b">Twitter</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -93,38 +81,51 @@
                         <div class="row mb-25">
                             <div class="col-md-12">
                                 <div class="blog-d-one-img">
-                                    {% image page.header_image original as header_image  %}
-                                    <img src="{{ header_image.url }}" alt="{{ header_image.alt }}" style="width: 80%; height: auto;">
+                                    {% image page.header_image max-325x325 as header_image %}
+                                    <img src="{{ header_image.url }}" alt="" />
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-25">
                             <div class="col-md-6">
                                 <div class="blog-d-i-con">
-                                    <b><i>“Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it “</i></b>
+                                    {% for block in page.body %}
+                                    {% if block.block_type == 'quotation' %}
+                                    <b><i>“{{ block.value }}“</i></b>
+                                    {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="blog-d-p-con">
+                                    {% for block in page.body %}
+                                    {% if block.block_type == 'mini_para' %}
                                     <p>
-                                       {{ page.get_shortened_body|richtext }}
+                                        {{ block.value }}
                                     </p>
+                                    {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-25">
                             <div class="col-md-12">
                                 <div class="blog-d-one-img">
-                                    <img src="images/blog-details2.png" alt="" />
+                                    {% image page.header_image original as header_image %}
+                                    <img src="{{ header_image.url }}" alt="" />
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-md-12">
                                 <div class="blog-d-p-con">
+                                    {% for block in page.body %}
+                                    {% if block.block_type == 'paragraphs' %}
                                     <p>
-                                        {{ page.get_shortened_body|richtext }}
+                                        {{ block.value }}
                                     </p>
+                                    {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -144,13 +145,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            {% for blog in blogs %}
                             <div class="col-md-12 mb-10">
                                 <div class="blog-box-one blog-simler-right">
                                     <div class="blog-cont">
                                         <h4>Articel</h4>
-                                        <h3><a href="">{{ blog.intro }}</a></h3>
-                                        <p>{{ blog.get_shortened_body|richtext }}</p>
+                                        <h3><a href="blog-details.html">How To Get People To Like Industry</a></h3>
+                                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.</p>
                                         <span class="blog-cont-tr-detail"></span>
                                     </div>
                                     <div class="blog-img-one" data-image="images/b1.png">
@@ -159,7 +159,62 @@
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
+                            <div class="col-md-12 mb-10">
+                                <div class="blog-box-one blog-simler-right">
+                                    <div class="blog-cont">
+                                        <h4>Articel</h4>
+                                        <h3><a href="blog-details.html">The Shocking Revelation of Industry</a></h3>
+                                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.</p>
+                                        <span class="blog-cont-tr-detail"></span>
+                                    </div>
+                                    <div class="blog-img-one" data-image="images/b2.png">
+                                        <a href="blog-details.html">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-10">
+                                <div class="blog-box-one blog-simler-right">
+                                    <div class="blog-cont">
+                                        <h4>Articel</h4>
+                                        <h3><a href="blog-details.html">Seven Outrageous Ideas Industry</a></h3>
+                                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.</p>
+                                        <span class="blog-cont-tr-detail"></span>
+                                    </div>
+                                    <div class="blog-img-one" data-image="images/b3.png">
+                                        <a href="blog-details.html">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-10">
+                                <div class="blog-box-one blog-simler-right">
+                                    <div class="blog-cont">
+                                        <h4>Articel</h4>
+                                        <h3><a href="blog-details.html">The Importance Of Intrinsic for Students</a></h3>
+                                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.</p>
+                                        <span class="blog-cont-tr-detail"></span>
+                                    </div>
+                                    <div class="blog-img-one" data-image="images/b4.png">
+                                        <a href="blog-details.html">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-10">
+                                <div class="blog-box-one blog-simler-right">
+                                    <div class="blog-cont">
+                                        <h4>Articel</h4>
+                                        <h3><a href="blog-details.html">Learn by doing with Real World Projects other</a></h3>
+                                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.</p>
+                                        <span class="blog-cont-tr-detail"></span>
+                                    </div>
+                                    <div class="blog-img-one" data-image="images/b5.png">
+                                        <a href="blog-details.html">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-12 mb-10">
                                 <div class="view-all">
                                     <a href="blogs.html" class="btn upcase">
@@ -175,7 +230,8 @@
             </div>
         </div>
     </div>
-    <!--Blog-Details-End-->
+
+    <!--end blog-detail-->
 
      <!--Comment-Start-->
      <div class="Blog-section ourmvv pt-70 pb-70">
