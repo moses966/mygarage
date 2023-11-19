@@ -1,4 +1,6 @@
 from django.db import models
+from django.shortcuts import render
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from taggit.models import Tag as TaggitTag, TaggedItemBase
@@ -9,7 +11,7 @@ from wagtail.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail import blocks
 
-#from .blocks import ParagraphWithImageBlock
+
 
 
 
@@ -19,6 +21,11 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("description"),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context['posts'] = PostPage.objects.live().public()
+        return context
 
 class PostPage (Page):
     header_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL , related_name="+")

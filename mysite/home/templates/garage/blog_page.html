@@ -33,25 +33,37 @@
                     <div class="right-text mb-30">
                         <h4 class="upcase linetext pl-70">Blogs Here</h4>
                         <h2>
-                            Our Blogs
+                            {{ page.description }}
                         </h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                {% for blog in page.blogs %}
+                <!--Looping through the posts context-->
+                {% for post in posts %}
                 <div class="col-md-3">
                     <div class="blog-box-one">
                         <div class="blog-cont">
                             <h4>Articel</h4>
-                            <h3><a href="{% pageurl blog %}">{{ blog.intro }}</a></h3>
-                            <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.</p>
+                            <!--Accessing the 'body' streamfield-->
+                            {% for block in post.body %}
+                            {% if block.block_type == 'heading' %}
+                            <h3><a href="{% pageurl post %}">{{ block.value }}</a></h3>
+                            {% elif block.block_type == 'paragraph1' %}
+                            <p>{{ block.value }}</p>
                             <span class="blog-cont-tr"></span>
+                            {% endif %}
+                            {% endfor %}
+                            <!--End of streamfield-->
                         </div>
+                        <!--Displaying the image-->
                         <div class="blog-img-one">
-                            <a href="blog-details.html">
-                                <img src="images/b1.png" alt="" />
+                            {% if post.header_image %}
+                            {% image post.header_image original as header_image %}
+                            <a href="{% pageurl post %}">
+                                <img src="{{ header_image.url }}" alt="" />
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
