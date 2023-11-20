@@ -150,16 +150,29 @@
                         <div class="row">
                             <div class="col-md-12 mb-10">
                                 <div class="blog-box-one blog-simler-right">
+                                    {% if similar_posts %}
                                     <div class="blog-cont">
                                         <h4>Articel</h4>
-                                        <h3><a href="blog-details.html">How To Get People To Like Industry</a></h3>
-                                        <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.</p>
+                                        {% for post in similar_posts %}
+                                        {% for block in post.body %}
+                                        {% if block.block_type == 'heading' %}
+                                        <h3><a href="{{ post.url }}">{{ block.value }}</a></h3>
+                                        {% elif block.block_type == 'mini_para' %}
+                                        <p>{{ block.value }}</p>
                                         <span class="blog-cont-tr-detail"></span>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endfor %}
                                     </div>
                                     <div class="blog-img-one" data-image="images/b1.png">
                                         <a href="blog-details.html">
                                         </a>
                                     </div>
+                                    {% else %}
+                                    <p>
+                                        No similar blogs yet
+                                    </p>
+                                    {% endif %}
                                 </div>
                                 {% tags_list %}
                             </div>

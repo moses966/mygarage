@@ -88,7 +88,22 @@ class PostPage (Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context['blog_page'] = self.get_parent().specific
+
+        # Add similar posts based on category to the context
+        context['similar_posts'] = self.get_similar_posts()
+
         return context
+    
+    def get_similar_posts(self):
+        # Get the first category associated with this post
+        category = self.categories.first()
+
+        # If there is a category, get other posts in the same category
+        if category:
+            similar_posts = PostPage.objects.live().filter(categories__blog_category=category.blog_category).exclude(id=self.id).order_by('-last_published_at')[:3]
+            return similar_posts
+        else:
+            return None
 
 # intermediary class that connects PostPage to categories, for storage of data into the database
 class PostPageBlogCategory(models.Model):

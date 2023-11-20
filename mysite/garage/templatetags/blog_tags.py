@@ -25,3 +25,4 @@ def tags_list(context):
         'blog_page': context['blog_page'],              
         'tags': tags
     }
+
