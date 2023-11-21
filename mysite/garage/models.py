@@ -66,12 +66,12 @@ class PostPage (Page):
     tags = ClusterTaggableManager(through= "PostPageTags", blank=True)
     body = StreamField([
     ('heading', blocks.CharBlock(form_classname="title")),
+    ('special_intro', blocks.CharBlock(max_length=200)),
     ('published_at', blocks.DateBlock(required='True')),
     ('paragraph1', blocks.RichTextBlock()),
     ('image1', ImageChooserBlock()),
     ('quotation', blocks.RichTextBlock()),
     ('mini_para', blocks.RichTextBlock()),
-    ('image2', ImageChooserBlock()),
     ('paragraphs', blocks.RichTextBlock()),
     ], block_counts={
         'heading': {'min_num': 1},

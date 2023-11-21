@@ -111,8 +111,12 @@
                         <div class="row mb-25">
                             <div class="col-md-12">
                                 <div class="blog-d-one-img">
-                                    {% image page.header_image original as header_image %}
-                                    <img src="{{ header_image.url }}" alt="" />
+                                    {% for block in page.body %}
+                                    {% if block.block_type == 'image1' %}
+                                    {% image block.value original as image1 %}
+                                    <img src="{{ image1.url }}" alt="" />
+                                    {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -174,13 +178,13 @@
                                     </p>
                                     {% endif %}
                                 </div>
+                                <br>
                                 {% tags_list %}
                             </div>
                             
-                            {% tags_list %}
                             <div class="col-md-12 mb-10">
                                 <div class="view-all">
-                                    <a href="blogs.html" class="btn upcase">
+                                    <a href="/our-blog" class="btn upcase">
                                         View All Blogs <i class="fa fa-arrow-right"></i>
                                         
                                     </a>

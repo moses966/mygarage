@@ -4,7 +4,8 @@ from django.shortcuts import redirect
 from modelcluster.fields import ParentalKey
 
 from wagtail.models import Page, Orderable
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
+from wagtail.blocks import PageChooserBlock
 from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
@@ -18,9 +19,16 @@ class HomePage(Page):
 class IndexPage(Page):
     body = RichTextField(blank=True)
 
+    featured = StreamField([
+        ('about', PageChooserBlock(required=False)),
+        ('services', PageChooserBlock(required=False)),
+        ('posts', PageChooserBlock(required=False)),
+    ], use_json_field=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('body'),
         InlinePanel('gallery_image', label="Gallery images"),
+        FieldPanel('featured'),
     ]
 
     

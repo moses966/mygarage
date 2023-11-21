@@ -8,7 +8,7 @@
 
     {% for tag in tags %}
       <a href="{% routablepageurl blog_page 'post_by_tag' tag.slug %}" class="text-gray-600 hover:text-gray-800">
-        <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-white bg-gray-600 hover:bg-gray-500 focus:bg-gray-700 rounded-full">{{ tag }}</span>
+        <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-white bg-black-600 hover:bg-gray-500 focus:bg-gray-700 rounded-full">{{ tag }}</span>
       </a>
     {% empty %}
       No tags yet

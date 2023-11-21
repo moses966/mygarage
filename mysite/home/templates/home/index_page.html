@@ -559,54 +559,38 @@
             </div>
 
             <div class="row pt-40">
+                {% for block in page.featured %} 
+                {% if block.block_type == 'posts' %} 
                 <div class="col-md-4 pl-30 pt-30 pb-30 pr-30">
+                    
                     <div class="blog-box">
-                        <div class="blog-img">
-                            <a href="#">
-                                <img src="images/blog1.png" alt="" />
-                            </a>
+                        <div class="blog-img"> 
+                             
+                            {% image block.value.specific.header_image fill-330x220 as header_image %}                           
+                            <a href="#"> 
+                                <img src="{{ header_image.url }}" alt="" /> 
+                            </a> 
+                            
                         </div>
+                        
                         <div class="blog-con">
                             <ul class="top-b">
                                 <li>Oct 22, 2021</li>
-                                <li>Johndy</li>
+                                <li>Roadlink</li>
                             </ul>
-                            <h4><a href="#">Can Good Tyre Increase Car Speed?</a></h4>
+                            {% with post=block.value.specific.body %}
+                            {% for block1 in post %}
+                            {% if block1.block_type == 'heading' %}
+                            <p><a href="#"></a>{{ block1.value }}</p>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
                         </div>
+                       
                     </div>
                 </div>
-                <div class="col-md-4 pl-30 pt-30 pb-30 pr-30">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <a href="#">
-                                <img src="images/blog2.png" alt="" />
-                            </a>
-                        </div>
-                        <div class="blog-con">
-                            <ul class="top-b">
-                                <li>Oct 22, 2021</li>
-                                <li>Johndy</li>
-                            </ul>
-                            <h4><a href="#">Modification Of The Car Engine?</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 pl-30 pt-30 pb-30 pr-30">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <a href="#">
-                                <img src="images/blog3.png" alt="" />
-                            </a>
-                        </div>
-                        <div class="blog-con">
-                            <ul class="top-b">
-                                <li>Oct 22, 2021</li>
-                                <li>Johndy</li>
-                            </ul>
-                            <h4><a href="#">How To Do Jump Start Of The Car ?</a></h4>
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
