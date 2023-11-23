@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="images-about before-ani after-ani">
-                            <img src="images/about-images.png" alt="" />
+                            <img src="/static/images/about-images.png" alt="" />
                             <span class="min-text-line">
                                 <b>E</b>Stablished<br />
                                 1984
@@ -101,13 +101,14 @@
                                 <div class="col-md-4">
                                     <div class="box-con">
                                         <span class="img-b">
-                                            <img src="images/mission.png" alt="" />
+                                         {% image block.value.image1 original as image1 %}
+                                            <img src="{{ image1.url }}" alt="" />
                                         </span>
-                                        <span class="num">1</span>
+                                        <span class="num">{{ block.value.number }}</span>
                                         <div class="dis-con mt-20">
                                             <h3>{{ block.value.header }} </h3>
                                             <p>
-                                                <!--Mission here-->
+                                                <!--text here-->
                                                 {{ block.value.text }}
                                             </p>
                                         </div>
@@ -130,7 +131,7 @@
                 <div class="row">
                     <div class="col-md-3  offset-md-1">
                         <div class="img-dir before-ani">
-                            <img src="images/direct.png" alt="">
+                            <img src="/static/images/direct.png" alt="">
                         </div>
                     </div>
                     <div class="col-md-8 pt-0 pl-60 pr-30">
