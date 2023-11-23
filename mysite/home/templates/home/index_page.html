@@ -138,8 +138,8 @@
                         <h1>01</h1>
                         <h4>24/7 Work Process</h4>
                         <p class="mb-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                        <a href="#" class="btn d-button">
-                            Read More <i class="fa fa-arrow-right"></i>
+                        <a href="/contact-us" class="btn d-button">
+                            Contact Us <i class="fa fa-arrow-right"></i>
                             <span style="top: 174.5px; left: 104.141px;"></span>
                         </a>
                     </div>
@@ -151,8 +151,8 @@
                         <h1>02</h1>
                         <h4>Expert Team Memebers</h4>
                         <p class="mb-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                        <a href="#" class="btn d-button">
-                            Read More <i class="fa fa-arrow-right"></i>
+                        <a href="/contact-us" class="btn d-button">
+                            Contact Us <i class="fa fa-arrow-right"></i>
                             <span style="top: 174.5px; left: 104.141px;"></span>
                         </a>
                     </div>
@@ -164,8 +164,8 @@
                         <h1>03</h1>
                         <h4>Quality Time Delivery</h4>
                         <p class="mb-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                        <a href="#" class="btn d-button">
-                            Read More <i class="fa fa-arrow-right"></i>
+                        <a href="/contact-us" class="btn d-button">
+                            Contact Us <i class="fa fa-arrow-right"></i>
                             <span style="top: 174.5px; left: 104.141px;"></span>
                         </a>
                     </div>
@@ -200,47 +200,28 @@
                         </div>
                     </div>
                     <div class="col-md-10">
-                        <div class="row">
+                        <div class="row"> <!--looping through featured block-->
+                            {% for block in page.featured %}
+                            {% if block.block_type == 'services' %}   
                             <div class="col-md-3">
                                 <div class="img-box">
-                                    <img src="/static/images/f1.png" alt="" />
-                                    <a href="#" class="btn play-video d-button orange-btn ml-20 po-t-r">
+                                    {% image block.value.specific.header_image fill-350x525 as header_image %} 
+                                    <img src="{{ header_image.url }}" alt="" />
+                                    <a href="{{ block.value.specific.url }}" class="btn play-video d-button orange-btn ml-20 po-t-r">
                                         <i class="fa fa-arrow-right"></i>
                                         <span style="top: 174.5px; left: 104.141px;"></span>
                                     </a>
-                                    <a href="#" class="f-name">Auto Car Repair</a>
+                                    {% with post=block.value.specific.body %}   <!--accessing the body block-->
+                                    {% for block1 in post %}
+                                    {% if block1.block_type == 'heading' %}
+                                    <a href="{{ block.value.specific.url }}" class="f-name">{{ block1.value }}</a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endwith %}
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="img-box">
-                                    <img src="/static/images/f2.png" alt="" />
-                                    <a href="#" class="btn play-video d-button orange-btn ml-20 po-t-r">
-                                        <i class="fa fa-arrow-right"></i>
-                                        <span style="top: 174.5px; left: 104.141px;"></span>
-                                    </a>
-                                    <a href="#" class="f-name">Car & Engine Clean</a>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="img-box">
-                                    <img src="/static/images/f3.png" alt="" />
-                                    <a href="#" class="btn play-video d-button orange-btn ml-20 po-t-r">
-                                        <i class="fa fa-arrow-right"></i>
-                                        <span style="top: 174.5px; left: 104.141px;"></span>
-                                    </a>
-                                    <a href="#" class="f-name">Full Car Service</a>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="img-box ">
-                                    <img src="/static/images/f4.png" alt="" />
-                                    <a href="#" class="btn play-video d-button orange-btn ml-20 po-t-r">
-                                        <i class="fa fa-arrow-right"></i>
-                                        <span style="top: 174.5px; left: 104.141px;"></span>
-                                    </a>
-                                    <a href="#" class="f-name">Fresh Oil Input</a>
-                                </div>
-                            </div>
+                            {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -559,34 +540,32 @@
             </div>
 
             <div class="row pt-40">
+                <!--looping throuh featured streamfield var-->
                 {% for block in page.featured %} 
+                <!--specifying the posts block-->
                 {% if block.block_type == 'posts' %} 
                 <div class="col-md-4 pl-30 pt-30 pb-30 pr-30">
-                    
                     <div class="blog-box">
-                        <div class="blog-img"> 
-                             
+                        <div class="blog-img"> <!--Display header_image from a specific page-->
                             {% image block.value.specific.header_image fill-330x220 as header_image %}                           
-                            <a href="#"> 
+                            <a href="{{ block.value.specific.url }}"> 
                                 <img src="{{ header_image.url }}" alt="" /> 
                             </a> 
-                            
                         </div>
-                        
                         <div class="blog-con">
                             <ul class="top-b">
                                 <li>Oct 22, 2021</li>
                                 <li>Roadlink</li>
                             </ul>
+                            <!--accessing the body var of the post page streamfield-->
                             {% with post=block.value.specific.body %}
                             {% for block1 in post %}
                             {% if block1.block_type == 'heading' %}
-                            <p><a href="#"></a>{{ block1.value }}</p>
+                            <h4><a href="{{ block.value.specific.url }}">{{ block1.value }}</a></h4>
                             {% endif %}
                             {% endfor %}
                             {% endwith %}
                         </div>
-                       
                     </div>
                 </div>
                 {% endif %}

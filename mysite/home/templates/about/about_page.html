@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% load static wagtailimages_tags wagtailcore_tags %}
+{% block body_class %}template-shoppage{% endblock %}
+
+{% block content %}                     
+
+    <div class="minsection">
+        <!--sub-Banner-start-->
+        <div class="sub-banner pt-80 pb-80">
+            <div class="container">
+                <div class="col-md-8  offset-md-2">
+                    <div class="text-center text-line">
+                        <h1>About Us</h1>
+                        <ul class="text-c">
+                            <li>Home</li>
+                            <li>|</li>
+                            <li class="color-t">About Us</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--sub-Banner-End-->
+        <!--About-Start-->
+        <div class="about pt-90 pb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images-about before-ani after-ani">
+                            <img src="images/about-images.png" alt="" />
+                            <span class="min-text-line">
+                                <b>E</b>Stablished<br />
+                                1984
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pt-30 pl-60 pr-30 pd-m-to">
+                        <div class="right-text">
+                            <h4 class="upcase linetext pl-70">About CarHub</h4>
+                            {% with blocks=page.body %}
+                            {% for block in blocks %}
+                            {% if block.block_type == 'about_block' %}
+                            <h2>
+                                <!--About header-->
+                                {{ block.value.heading }}
+                            </h2>
+                               <p>
+                                <!--intro-->
+                                {{ block.value.intro }}
+                               </p>
+                            <div class="company-aim">
+                                <div class="com-one">
+                                    <div class="right-side-text be-l">
+                                        <p>
+                                            <!--para_mini1-->
+                                            {{ block.value.mini_para1 }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="com-one">
+                                    <div class="right-side-text be-l">
+                                        <p>
+                                            <!--para_mini2-->
+                                            {{ block.value.mini_para2 }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <p class="no-d-m">{{ block.value.outro }}</p>
+                                <!--
+                                <div class="button-section">
+                                    <span class="video-play m-l-0">
+                                        <a href="https://www.youtube.com/watch?v=pZVdQLn_E5w" class="btn play-video orange-btn ml-20  popup-youtube">
+                                            <i class="fa fa-play"></i>
+                                            <span style="top: 174.5px; left: 104.141px;"></span>
+                                        </a>
+                                        Play Video
+                                    </span>
+                                </div>
+                            -->
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--About-End-->
+        <!--Our M.V.V-End-->
+        <div class="Testimonials ourmvv pt-90 pb-130">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-11 mar-auto">
+                        <div class="video-bg mt-60">
+                            <div class="po-box-mvv row">
+                                {% with blocks=page.body %}
+                                {% for block in blocks %}
+                                {% if block.block_type == 'goals' %}
+                                <div class="col-md-4">
+                                    <div class="box-con">
+                                        <span class="img-b">
+                                            <img src="images/mission.png" alt="" />
+                                        </span>
+                                        <span class="num">1</span>
+                                        <div class="dis-con mt-20">
+                                            <h3>{{ block.value.header }} </h3>
+                                            <p>
+                                                <!--Mission here-->
+                                                {{ block.value.text }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endwith %}
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Our M.V.V-End-->
+        <!--Director’s message Start-->
+        <div class="Director pt-90 pb-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3  offset-md-1">
+                        <div class="img-dir before-ani">
+                            <img src="images/direct.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-8 pt-0 pl-60 pr-30">
+                        <div class="right-text Director-con">
+                            <h4 class="upcase linetext pl-70">director’s message</h4>
+                            {% with blocks=page.body %}
+                            {% for block in blocks %}
+                            {% if block.block_type == 'about_director' %}
+                            <h2>
+                                <!--Header here-->
+                                {{ block.value.heading1 }}
+                            </h2>
+                            <p>
+                                <!--Director's message here-->
+                                {{ block.value.message }}
+                            </p>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Director’s message End-->
+    </div>
+  
+{% endblock %}
