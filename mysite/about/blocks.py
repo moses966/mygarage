@@ -1,5 +1,5 @@
 
-from wagtail.blocks import StructBlock, IntegerBlock
+from wagtail.blocks import StructBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail import blocks
 
@@ -10,6 +10,7 @@ class AboutBlock(StructBlock):
     mini_para1 = blocks.CharBlock(max_length='120')
     mini_para2 = blocks.CharBlock(max_length='120')
     outro = blocks.CharBlock(max_length='250')
+    image1 = ImageChooserBlock()
 
 class GoalBlock(StructBlock):
     header = blocks.RichTextBlock()
@@ -20,8 +21,9 @@ class GoalBlock(StructBlock):
 class Director(StructBlock):
     heading1 = blocks.RichTextBlock()
     message = blocks.RichTextBlock()
+    image1 = ImageChooserBlock()
 
-class Faqs(StructBlock):
+'''class Faqs(StructBlock):
     question = blocks.CharBlock(max_length='50')
-    answer = blocks.CharBlock(max_length='250')
+    answer = blocks.CharBlock(max_length='250')'''
 

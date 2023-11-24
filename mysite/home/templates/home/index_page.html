@@ -3,6 +3,7 @@
 <!-- Load the wagtailimages_tags: -->
 {% load static wagtailimages_tags wagtailcore_tags %}
 {% load blog_tags %}
+{% load index_tags %}
 
 {% block body_class %}template-shoppage{% endblock %}
 
@@ -64,14 +65,13 @@
                 <div class="col-md-6">
                     <div class="left-image">
                         <span class="cricle alltuchtopdown"></span>
-                    
-                        <!-- Accessing the first image in the gallery -->
-                      {#  {% display_blog_images "tester" as blog_image %} #}
-                         {# {% if blog_image %}   #}
-                            {#  {% image blog_image.image scale-100 %} #}
-                         {# {% endif %} #}
-
-    
+                         <!-- Accessing the first image in the gallery -->
+                        
+                         {% display_index_images "aboutimg" as index_image %}
+                         {% if index_image %}   
+                            {% image index_image.image scale-100 %}
+                         {% endif %}
+                        
                         <div class="min-bg alltuchtopdown">
                             <h1>25+</h1>
                             <h3>Years of Experience</h3>
@@ -108,10 +108,11 @@
                             </div>
 
                             <div class="button-section mt-25">
-                                <a href="#" class="btn orange-btn">
+                                <a href="/contact-us" class="btn orange-btn">
                                     More About <i class="fa fa-arrow-right"></i>
                                     <span style="top: 174.5px; left: 104.141px;"></span>
                                 </a>
+                                <!--
                                 <span class="video-play">
                                     <a href="https://www.youtube.com/watch?v=pZVdQLn_E5w" class="btn play-video orange-btn ml-20 popup-youtube">
                                         <i class="fa fa-play"></i>
@@ -119,6 +120,7 @@
                                     </a>
                                     Play Video
                                 </span>
+                            -->
                             </div>
 
                         </div>
@@ -235,7 +237,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="img-con before-ani">
-                        <img src="/static/images/con-l.png" alt="" />
+                        {% display_index_images "engine" as index_image %}
+                         {% if index_image %}   
+                            {% image index_image.image scale-100 %}
+                         {% endif %}
                         <div class="po-con alltuchtopdown">
                             <h3>We provide Solutions to grow Your business</h3>
                         </div>
@@ -269,7 +274,7 @@
                             </div>
 
                             <div class="button-section mt-25 ml-55">
-                                <a href="#" class="btn orange-btn">
+                                <a href="/services" class="btn orange-btn">
                                     Discover Service <i class="fa fa-arrow-right"></i>
                                     <span style="top: 174.5px; left: 104.141px;"></span>
                                 </a>
@@ -671,10 +676,10 @@
 
     <!-- Request A Quote-End -->
 
-    <script>
-        var leftArrowImgURL = "{% static 'images/left-arrow-small.png' %}";
-        var rightArrowImgURL = "{% static 'images/right-arrow-small.png' %}";
-    </script>
+    <!--<script>
+       // var leftArrowImgURL = "{% static 'images/left-arrow-small.png' %}";
+       // var rightArrowImgURL = "{% static 'images/right-arrow-small.png' %}";
+    </script>-->
     
 </div>
 

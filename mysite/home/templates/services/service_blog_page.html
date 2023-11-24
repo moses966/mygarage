@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+<!-- Load the wagtailimages_tags: -->
+{% load static wagtailimages_tags wagtailcore_tags %}
+{% load blog_tags %}
+
+{% block body_class %}template-shoppage{% endblock %}
+
+{% block content %}
+
+<div class="minsection">
+    <!--sub-Banner-start-->
+    <div class="sub-banner pt-80 pb-80">
+        <div class="container">
+            <div class="col-md-8  offset-md-2">
+                <div class="text-center text-line">
+                    <h1>Services</h1>
+                    <ul class="text-c">
+                        <li>Home</li>
+                        <li>|</li>
+                        <li class="color-t">Services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--sub-Banner-End-->
+    <!--About-Start-->
+    <div class="about pt-30 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 pt-80 pr-40 pd-salf pd-top-s">
+                    <div class="right-text">
+                        <h4 class="upcase linetext pl-70">CarHub Services</h4>
+                        {% with blocks=page.displayed %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'firsts' %}
+                        <h2>
+                            {{ block.value.heading }}
+                        </h2>
+                        <div class="company-aim">
+                            <p>
+                                {{ block.value.text }}
+                            </p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-md-6 pt-30 pl-150 pr-30">
+                    <div class="images-ser-r before-ani after-ani pr-40">
+                        {% with blocks=page.displayed %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'firsts' %}
+                        {% image block.value.image1 original as image %}
+                        <img src="{{ image.url }}" alt="" />
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+                        <div class="min-bg-ser alltuchtopdown d-none-m">
+                            <h2>
+                                Call Us<br />
+                                and Get the<br />
+                                Best Services
+                            </h2>
+                            <a href="tel:+1(817)9013377" class="call-b"><i class="fa fa-phone"></i> +1 (817) 901 3377</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--About-End-->
+    <!--Best Services-Start-->
+    <div class="min-section min-section-ser pt-90 pb-90 cr-bg">
+        <img src="/static/images/ser-b.png" alt="" class="po-img alltuchtopdown"/>
+        <div class="container">
+            <div class="right-text ">
+                <h4 class="upcase linetext pl-70">Best Services</h4>
+                <h2>
+                    {{ page.description|richtext }}
+                </h2>
+            </div>
+
+            <div class="box-list mt-25">
+                <div class="row">
+                    {% for post in posts %}
+                    <div id="owl-demo5" class="owl-demo5 owl-carousel owl-theme pl-20 pr-20">
+                        <div class="item">
+                            <div class="box-con box-ser-l">
+                                <span class="img-b">
+                                    {% image post.header_image original as header_image %}
+                                    <img src="{{ header_image.url }}" alt="">
+                                </span>
+                                {% with blocks=post.body %}
+                                {% for block in blocks %}
+                                {% if block.block_type == 'body_class' %}
+                                <span class="num">{{ block.value.post_number }}</span>
+                                <div class="dis-con mt-20">
+                                    <h3>
+                                        {{ block.value.heading }}
+                                    </h3>
+                                    <p> {{ block.value.core_intro }} </p>
+                                    <a href="{% pageurl post %}">Read More...</a>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Best Services-End-->
+    <!--CarHub Consulting- Start-->
+    <div class="about consulting-over pt-30 pb-30 pd-b-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 pt-80 pr-40 pd-top-s">
+                    <div class="right-text">
+                        <h4 class="upcase linetext pl-70">CarHub Services<h4>
+                        {% with blocks=page.displayed %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'secs' %}
+                        <h2>
+                            {{ block.value.heading }}
+                        </h2>
+                        <p>
+                            {{ block.value.intro }}
+                        </p>
+
+                        <div class="company-aim mt-15 mb-20">
+                            <ul class="wi-50-ser">
+                                <li>{{ block.value.text1 }}</li>
+                                <li>{{ block.value.text2 }}</li>
+                                <li>{{ block.value.text3 }}</li>
+                                <li>{{ block.value.text4 }}</li>
+                                <li>{{ block.value.text5 }}</li>
+                                <li>{{ block.value.text6 }}</li>
+                               
+                            </ul>
+                        </div>
+                        <p> {{ block.value.outro }} </p>
+                        
+                        
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+                    </div>
+                </div>
+                {% with blocks=page.displayed %}
+                {% for block in blocks %}
+                {% if block.block_type == 'secs' %}
+                <div class="col-md-6 col-md-6 pt-30 pl-140 pr-15 pd-salf pd-top-new">
+                    <div class="images-ser-r-two before-ani after-ani pr-0">
+                        {% image block.value.image1 original as image %}
+                        <img src="{{ image.url }}" alt="">                            
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+    <!--CarHub Consulting- End-->
+</div>
+
+
+{% endblock %}

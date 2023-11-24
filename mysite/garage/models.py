@@ -47,7 +47,7 @@ class BlogPage(RoutablePageMixin, Page):
         self.posts = self.get_posts().filter(categories__blog_category__slug=category)
         return self.render(request)
     
-     # Define a route for the blog page that shows the list of posts
+    # Define a route for the blog page that shows the list of posts
     @route(r'^$')
     def post_list(self, request, *args, **kwargs):
         # Assign the posts to a variable
