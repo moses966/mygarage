@@ -13,38 +13,39 @@
     <!-- Slider-Start -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner1.png)">
+            {% with blocks=page.featured %}
+            {% for block in blocks %}
+            {% if block.block_type == 'carousel' %}
+            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner_one.jpg)">
                 <div class="content-slider">
                     <h1>
-                        Get Premium Auto Car <br>Service Feel Free<br> To Contact Us
+                        {{ block.value.heading1 }}
                     </h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and <br />typesetting industry. Lorem Ipsum has been the industry's</p>
+                    <p> {{ block.value.text1 }} </p>
                     <a href="#" class="btn ">
                         Get Started <i class="fa fa-arrow-right"></i>
                         <span style="top: 213.5px; left: 50.6406px;"></span>
                     </a>
                 </div>
             </div>
-            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner1.png)">
+            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner_two.jpg)">
                 <div class="content-slider animated fadeInLeft animate__delay-2s">
                     <h1>
-                        Get Premium Auto Car <br>Service Feel Free<br> To Contact Us
+                        {{ block.value.heading2 }}
                     </h1> 
-                    <p>Lorem Ipsum is simply dummy text of the printing and <br />typesetting industry. Lorem Ipsum has been the industry's</p>
+                    <p> {{ block.value.text2 }} </p>
                     <a href="#" class="btn ">
                         Get Started <i class="fa fa-arrow-right"></i>
                         <span style="top: 213.5px; left: 50.6406px;"></span>
                     </a>
                 </div>
             </div>
-            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner1.png)">
+            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner3.jpg)">
                 <div class="content-slider">
                     <h1>
-                        Grow<br />
-                        Your Business<br />
-                        With Consulting
+                        {{ block.value.heading3 }}
                     </h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and <br />typesetting industry. Lorem Ipsum has been the industry's</p>
+                    <p> {{ block.value.text3 }} </p>
                     <a href="#" class="btn ">
                         Get Started <i class="fa fa-arrow-right"></i>
                         <span style="top: 213.5px; left: 50.6406px;"></span>
@@ -53,6 +54,9 @@
             </div>
 
         </div>
+        {% endif %}
+        {% endfor %}
+        {% endwith %}
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
@@ -80,32 +84,38 @@
                 <div class="col-md-6 pt-50 pl-60 pr-30">
                     <div class="right-text">
                         <h4 class="upcase linetext pl-70">About CarHub</h4>
+                        {% with blocks=page.featured %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'home1' %}
                         <h2>
-                            The Best Choice For Your
-                            Successful Business
+                            {{ block.value.heading }}
                         </h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.</p>
+                        <p> {{ block.value.intro }} </p>
 
                         <div class="company-aim">
                             <div class="com-one">
                                 <span class="left-side-icon">
-                                    <img src="/static/images/focus.png" alt="" />
+                                    {% image block.value.image1 original as image %}
+                                    <img src="{{ image.url }}" alt="" />
                                 </span>
                                 <div class="right-side-text">
-                                    <h3>Focused on Business</h3>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                                    <h3> {{ block.value.sub_header1 }} </h3>
+                                    <p> {{ block.value.text1 }} </p>
                                 </div>
                             </div>
                             <div class="com-one mt-20">
                                 <span class="left-side-icon orange">
-                                    <img src="/static/images/thought.png" alt="" />
+                                    {% image block.value.image2 original as image %}
+                                    <img src="{{ image.url }}" alt="" />
                                 </span>
                                 <div class="right-side-text">
-                                    <h3>High Level of Knowledge</h3>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                                    <h3> {{ block.value.sub_header2 }} </h3>
+                                    <p> {{ block.value.text2 }} </p>
                                 </div>
                             </div>
-
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
                             <div class="button-section mt-25">
                                 <a href="/contact-us" class="btn orange-btn">
                                     More About <i class="fa fa-arrow-right"></i>
@@ -136,39 +146,57 @@
             <div class="col-md-4">
                 <div class="top-section" style="background-image:url(/static/images/d-1.png);">
                     <div class="d-content">
+                        {% with blocks=page.featured %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'carousel1' %}
                         <h1>01</h1>
-                        <h4>24/7 Work Process</h4>
-                        <p class="mb-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                        <h4> {{ block.value.heading }} </h4>
+                        <p class="mb-30"> {{ block.value.intro }} </p>
                         <a href="/contact-us" class="btn d-button">
                             Contact Us <i class="fa fa-arrow-right"></i>
                             <span style="top: 174.5px; left: 104.141px;"></span>
                         </a>
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="top-section" style="background-image:url(/static/images/d-2.png);">
                     <div class="d-content">
+                        {% with blocks=page.featured %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'carousel2' %}
                         <h1>02</h1>
-                        <h4>Expert Team Memebers</h4>
-                        <p class="mb-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                        <h4> {{ block.value.heading }} </h4>
+                        <p class="mb-30"> {{ block.value.intro }} </p>
                         <a href="/contact-us" class="btn d-button">
                             Contact Us <i class="fa fa-arrow-right"></i>
                             <span style="top: 174.5px; left: 104.141px;"></span>
                         </a>
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="top-section" style="background-image:url(/static/images/d-3.png);">
                     <div class="d-content">
+                        {% with blocks=page.featured %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'carousel3' %}
                         <h1>03</h1>
-                        <h4>Quality Time Delivery</h4>
-                        <p class="mb-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                        <h4> {{ block.value.heading }} </h4>
+                        <p class="mb-30"> {{ block.value.intro }} </p>
                         <a href="/contact-us" class="btn d-button">
                             Contact Us <i class="fa fa-arrow-right"></i>
                             <span style="top: 174.5px; left: 104.141px;"></span>
                         </a>
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
                     </div>
                 </div>
             </div>
@@ -247,30 +275,38 @@
                 </div>
                 <div class="col-md-6 pt-50 pl-20 pr-30 pad-top-s">
                     <div class="right-text">
+                        {% with blocks=page.featured %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'home2' %}
 
                         <h2>
-                            CarHub the Best Consulting
+                            {{ block.value.heading }}
                         </h2>
 
                         <div class="company-aim">
                             <div class="com-one">
                                 <span class="left-side-icon tran-bg">
-                                    <img src="/static/images/opration.png" alt="">
+                                    {% image block.value.image1 original as image %}
+                                    <img src="{{ image.url }}" alt="">
                                 </span>
                                 <div class="right-side-text b-text">
-                                    <h3>Operational excellence</h3>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                                    <h3> {{ block.value.sub_header1 }} </h3>
+                                    <p> {{ block.value.text1 }} </p>
                                 </div>
                             </div>
                             <div class="com-one mt-20">
                                 <span class="left-side-icon tran-bg">
-                                    <img src="/static/images/management.png" alt="">
+                                    {% image block.value.image2 original as image %}
+                                    <img src="{{ image.url }}" alt="">
                                 </span>
                                 <div class="right-side-text b-text">
-                                    <h3>Innovative solutions</h3>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                                    <h3> {{ block.value.sub_header2 }} </h3>
+                                    <p> {{ block.value.text2 }} </p>
                                 </div>
                             </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
 
                             <div class="button-section mt-25 ml-55">
                                 <a href="/services" class="btn orange-btn">
@@ -294,44 +330,52 @@
             <div class="col-md-6 pt-90 pb-40 pl-70 pr-30">
                 <div class="right-text ">
                     <h4 class="upcase linetext pl-70">Why Choose Us</h4>
+                    {% with blocks=page.featured %}
+                    {% for block in blocks %}
+                    {% if block.block_type == 'home3' %}
                     <h2>
-                        Make your car feel<br> like a brand new one
+                        {{ block.value.heading }}
                     </h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
-
+                    <p> {{ block.value.intro }} </p>
                 </div>
                 <div class="min-s-list row pt-30">
                     <div class="col-md-4">
                         <div class="bg-sec-list mt-45">
                             <span class="l-img">
-                                <img src="/static/images/support.png" alt="" />
+                                {% image block.value.image1 original as image %}
+                                <img src="{{ image.url }}" alt="" />
                             </span>
                             <span class="text-w">1</span>
-                            <h3>Best Support</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing</p>
+                            <h3> {{ block.value.sub_header1 }} </h3>
+                            <p> {{ block.value.text1 }} </p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="bg-sec-list bg-blue">
                             <span class="l-img">
-                                <img src="/static/images/cms.png" alt="" />
+                                {% image block.value.image2 original as image %}
+                                <img src="{{ image.url }}" alt="" />
                             </span>
                             <span class="text-w">2</span>
-                            <h3>Best CMS</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing</p>
+                            <h3> {{ block.value.sub_header2 }} </h3>
+                            <p> {{ block.value.text2 }} </p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="bg-sec-list mt-45">
                             <span class="l-img">
-                                <img src="/static/images/solution.png" alt="" />
+                                {% image block.value.image3 original as image %}
+                                <img src="{{ image.url }}" alt="" />
                             </span>
                             <span class="text-w">3</span>
-                            <h3>Best Solution</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing</p>
+                            <h3> {{ block.value.sub_header3 }} </h3>
+                            <p> {{ block.value.text3 }} </p>
                         </div>
                     </div>
                 </div>
+                {% endif %}
+                {% endfor %}
+                {% endwith %}
 
             </div>
             <div class="col-md-6 pd-0">
@@ -348,13 +392,15 @@
     <!-- How It Work-Start -->
     <div class="howitwork pt-90 pb-60">
         <div class="container">
+            {% with blocks=page.featured %}
+            {% for block in blocks %}
+            {% if block.block_type == 'home4' %}
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-t">
-                        <h2>How It Works</h2>
+                        <h2> {{ block.value.heading }} </h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing<br />
-                            elit do eiusmod tempor incididunt ut labore
+                            {{ block.value.intro }}
                         </p>
 
                     </div>
@@ -365,171 +411,40 @@
                 <div class="col-md-4">
                     <div class="how-sec">
                         <span class="before-line">
-                            <img src="/static/images/place.png" alt="" />
+                            {% image block.value.image1 original as image %}
+                            <img src="{{ image.url }}" alt="" />
                         </span>
-                        <h4>Pick up</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
+                        <h4> {{ block.value.sub_header1 }} </h4>
+                        <p> {{ block.value.text1 }} </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="how-sec">
                         <span class="before-line">
-                            <img src="/static/images/owner.png" alt="" />
+                            {% image block.value.image2 original as image %}
+                            <img src="{{ image.url }}" alt="" />
                         </span>
-                        <h4>Service</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
+                        <h4> {{ block.value.sub_header2 }} </h4>
+                        <p> {{ block.value.text2 }} </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="how-sec no-be">
                         <span class="before-line">
-                            <img src="/static/images/reserved.png" alt="" />
+                            {% image block.value.image3 original as image %}
+                            <img src="{{ image.url }}" alt="" />
                         </span>
-                        <h4>Drop</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
+                        <h4> {{ block.value.sub_header3 }} </h4>
+                        <p> {{ block.value.text3 }} </p>
                     </div>
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% endfor %}
+        {% endwith %}
     </div>
     <!-- How It Work-End -->
-    <!-- Testimonials-Start 
-    <div class="Testimonials home-test pt-90 pb-60">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading-t">
-                        <h2>Our Testimonials</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing.
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="row pt-40">
-                <div id="owl-demo5" class="owl-demo5 owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="testmonial-box">
-                            <div class="img-text-top">
-                                <span class="img-user">
-                                    <img src="images/author-thumb-3.jpg" alt="" />
-                                </span>
-                                <div class="right-t">
-                                    <h4>Marvin Kinney</h4>
-                                    <p>Designer</p>
-                                    <ul class="test-rating">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="dis-test">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testmonial-box">
-                            <div class="img-text-top">
-                                <span class="img-user">
-                                    <img src="images/team-image-4.jpg" alt="" />
-                                </span>
-                                <div class="right-t">
-                                    <h4>Marvin Kinney</h4>
-                                    <p>Designer</p>
-                                    <ul class="test-rating">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="dis-test">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testmonial-box">
-                            <div class="img-text-top">
-                                <span class="img-user">
-                                    <img src="images/team-image-3.jpg" alt="" />
-                                </span>
-                                <div class="right-t">
-                                    <h4>Marvin Kinney</h4>
-                                    <p>Designer</p>
-                                    <ul class="test-rating">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="dis-test">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testmonial-box">
-                            <div class="img-text-top">
-                                <span class="img-user">
-                                    <img src="images/author-thumb-5.jpg" alt="" />
-                                </span>
-                                <div class="right-t">
-                                    <h4>Marvin Kinney</h4>
-                                    <p>Designer</p>
-                                    <ul class="test-rating">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="dis-test">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testmonial-box">
-                            <div class="img-text-top">
-                                <span class="img-user">
-                                    <img src="images/author-thumb-4.jpg" alt="" />
-                                </span>
-                                <div class="right-t">
-                                    <h4>Marvin Kinney</h4>
-                                    <p>Designer</p>
-                                    <ul class="test-rating">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="dis-test">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-     Testimonials-End -->
 
     <!-- Blog-Start -->
     <div class="Blog-section pt-90 pb-60">

@@ -10,6 +10,11 @@ from wagtail.admin.panels import (
     FieldPanel,
     InlinePanel,
 )
+from .blocks import (
+    CarouselBlock1, CarouselBlock2, CarouselBlock3,
+    HomeBlock1, HomeBlock2, HomeBlock3, HomeBlock4,
+    CarouselBlock
+    )
 
 # HomePage model representing the root page of the website
 class HomePage(Page):
@@ -22,6 +27,14 @@ class IndexPage(Page):
     featured = StreamField([
         ('services', PageChooserBlock(required=False)),
         ('posts', PageChooserBlock(required=False)),
+        ('carousel', CarouselBlock()),
+        ('carousel1', CarouselBlock1()),
+        ('carousel2', CarouselBlock2()),
+        ('carousel3', CarouselBlock3()),
+        ('home1', HomeBlock1()),
+        ('home2', HomeBlock2()),
+        ('home3', HomeBlock3()),
+        ('home4', HomeBlock4()),
     ], use_json_field=True)
 
     content_panels = Page.content_panels + [
