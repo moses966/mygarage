@@ -1,4 +1,6 @@
 {% load static wagtailcore_tags wagtailuserbar %}
+{% load wagtailimages_tags %}
+{% load index_tags %}
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -77,7 +79,12 @@
                         <div class="menu-wrap">
                             <nav class="menu-nav">
                                 <div class="logo">
-                                    <a href="/home"><img src="images/header-logo.png" alt=""></a>
+                                    <a href="/home">
+                                        {% display_index_images "logo" as index_image %}
+                                         {% if index_image %}
+                                          {% image index_image.image fill-204x63 %}
+                                         {% endif %}
+                                    </a>
                                 </div>
                                 <div class="navbar-wrap main-menu d-none d-lg-flex">
                                     <ul class="navigation">
@@ -175,7 +182,10 @@
                     <div class="footer-cont footer-logo">
                         <span class="logo-f mar-top">
                             <a href="#">
-                                <img src="images/footer-logo.png" alt="" />
+                                {% display_index_images "logo" as index_image %}
+                                  {% if index_image %}
+                                    {% image index_image.image fill-330x113 %}
+                                  {% endif %}
                             </a>
                         </span>
                         <p>Welcome to our business consulting company. Lorem ipsum simply free text dolor sited amet cons cing elit.</p>

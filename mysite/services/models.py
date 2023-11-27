@@ -4,14 +4,9 @@ from django.db import models
 from django.shortcuts import render
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.models import Page 
-from wagtail.admin.panels import FieldPanel, InlinePanel
-from taggit.models import Tag as TaggitTag, TaggedItemBase
+from wagtail.admin.panels import FieldPanel
 from wagtail.snippets.models import register_snippet
-from modelcluster.fields import ParentalKey
-from modelcluster.tags import ClusterTaggableManager
 from wagtail.fields import StreamField, RichTextField
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail import blocks
 from .blocks import FirstServiceBlock, SecondServiceBlock, BodyBlock
 
 

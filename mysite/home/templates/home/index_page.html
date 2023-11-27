@@ -9,7 +9,6 @@
 
 {% block content %}
 
-
 <div class="minsection">
     <!-- Slider-Start -->
     <div class="swiper mySwiper">
@@ -337,7 +336,10 @@
             </div>
             <div class="col-md-6 pd-0">
                 <div class="full-img ">
-                    <img src="/static/images/right-side.png" alt="" />
+                    {% display_index_images "right-side" as index_image %}
+                    {% if index_image %}
+                    {% image index_image.image fill-650x645 %}
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -559,7 +561,14 @@
                         </div>
                         <div class="blog-con">
                             <ul class="top-b">
-                                <li>Oct 22, 2021</li>
+                                {% with post=block.value.specific.body %}
+                                {% for block1 in post %}
+                                {% if block1.block_type == 'published_at' %}
+                                <li> {{ block1.value }} </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% endwith %}
+
                                 <li>Roadlink</li>
                             </ul>
                             <!--accessing the body var of the post page streamfield-->
@@ -677,9 +686,9 @@
     <!-- Request A Quote-End -->
 
     <!--<script>
-       // var leftArrowImgURL = "{% static 'images/left-arrow-small.png' %}";
-       // var rightArrowImgURL = "{% static 'images/right-arrow-small.png' %}";
-    </script>-->
+        var leftArrowImgURL = "{% static 'images/left-arrow-small.png' %}";
+        var rightArrowImgURL = "{% static 'images/right-arrow-small.png' %}";
+    </script> -->
     
 </div>
 

@@ -20,7 +20,6 @@ class IndexPage(Page):
     body = RichTextField(blank=True)
 
     featured = StreamField([
-        ('about', PageChooserBlock(required=False)),
         ('services', PageChooserBlock(required=False)),
         ('posts', PageChooserBlock(required=False)),
     ], use_json_field=True)
