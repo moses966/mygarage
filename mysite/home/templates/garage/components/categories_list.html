@@ -1,24 +1,17 @@
 {% load wagtailroutablepage_tags %}
 
-<div class="mb-4 border rounded-lg border-opacity-75 border-gray-300 shadow-xl overflow-hidden">
-  <div class="bg-gray-100 text-gray-900 px-6 py-4">
-      <h4 class="text-lg font-semibold">Categories</h4>
-  </div>
-  <div class="px-6 py-4">
-      <nav class="list-none">
-          {% if categories %}
-              <ul>
-                  {% for category in categories %}
-                      <li class="mb-2">
-                          <a href="{% routablepageurl blog_page 'post_by_category' category.slug %}" class="text-blue-500 hover:text-blue-700 no-underline hover:underline">
-                              {{ category.name }}
-                          </a>
-                      </li>
-                  {% endfor %}
-              </ul>
-          {% else %}
-              <p class="text-gray-600">No categories yet</p>
-          {% endif %}
-      </nav>
-  </div>
+<div class="side-nav-categories">
+    <div class="title"><strong>Categories</strong></div>
+    <br>
+    {% if categories %}
+    <ul id="category-tabs">
+            <ul class="sub-category-tabs">
+                {% for category in categories %}
+                <li><i class="fa fa-css3"></i><a href="{% routablepageurl blog_page 'post_by_category' category.slug %}"> {{ category.name }} </a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p> No categories yet! </p>
+    </ul>
+    {% endif %}
 </div>

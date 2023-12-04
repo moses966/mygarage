@@ -1,1 +1,135 @@
 {% extends 'base.html' %}
+
+<!-- Load the wagtailimages_tags: -->
+{% load static wagtailimages_tags wagtailcore_tags %}
+{% load blog_tags %}
+
+{% block body_class %}template-shoppage{% endblock %}
+
+{% block content %}
+<div class="minsection">
+ <!--sub-Banner-start-->
+ <div class="sub-banner pt-80 pb-80">
+    <div class="container">
+        <div class="col-md-8  offset-md-2">
+            <div class="text-center text-line">
+                <h1>Service Details</h1>
+                <ul class="text-c">
+                    <li>Home</li>
+                    <li>|</li>
+                    <li class="color-t">Service Details</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--sub-Banner-End-->
+
+<!--About-service-Start-->
+<div class="about pt-80 pb-60 ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="right-text">
+                    <h4 class="upcase linetext pl-70">CarHub Services Details</h4>
+                    {% with blocks=page.body %}
+                    {% for block in blocks %}
+                    {% if block.block_type == 'body_class' %}
+                    <h2>
+                        {{ block.value.heading }}
+                    </h2>
+
+                    <div class="company-aim mt-0">
+                        <p> {{ block.value.intro }} </p>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endwith %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--About-service-End-->
+<!--services-d-Start-->
+<div class="about bg-ser-details pt-0 p-20">
+    <div class="container">
+        <div class="row">
+            {% with blocks=page.body %}
+            {% for block in blocks %}
+            {% if block.block_type == 'body_class' %}
+            <div class="col-md-6 pt-80 pb-80">
+                <div class="ser-det-img">
+                    {% image block.value.image1 original as image%}
+                    <img src="{{ image.url }}" alt="" />
+                </div>
+            </div>
+            <div class="col-md-6 bg-gray-ser-d pl-30">
+                <div class="ser-d-right-text  mt-80 mb-80">
+                    <div class="company-aim mt-0">
+                        <p>
+                            {{ block.value.paragraph1 }}
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
+
+        </div>
+    </div>
+</div>
+<!--services-d-End-->
+<!--service-de-min-Start-->
+<div class="about pt-80 pb-60 pd-ser-s">
+    <div class="container">
+        <div class="row">
+            {% with blocks=page.body %}
+            {% for block in blocks %}
+            {% if block.block_type == 'body_class' %}
+            <div class="col-md-10  offset-md-1">
+                <div class="ser-details-con">
+                    <p class="p-first-latter">
+                        {{ block.value.paragraph2 }}
+                    </p>
+                </div>
+                <div class="row mt-30 mb-30">
+                    <div class="col-md-6">
+                        <div class="box-s-gray">
+                            <p> {{ block.value.thought1 }} </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box-s-gray">
+                            <p> {{ block.value.thought2 }} </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="ser-de-min-con">
+                            <p>
+                                {{ block.value.paragraphs }}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
+
+        </div>
+    </div>
+</div>
+<!--service-de-min-End-->
+</div>
+
+{% endblock %}

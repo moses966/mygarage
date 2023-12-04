@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 <!-- Load the wagtailimages_tags: -->
-{% load static wagtailimages_tags wagtailcore_tags %}
+{% load static wagtailimages_tags wagtailcore_tags wagtailmetadata_tags %}
 {% load blog_tags %}
 
-{% block body_class %}template-shoppage{% endblock %}
+{% block meta_tag %}
+  {% meta_tags %}
+{% endblock %}
 
 {% block content %}
 
@@ -81,7 +83,7 @@
                         <div class="row mb-25">
                             <div class="col-md-12">
                                 <div class="blog-d-one-img">
-                                    {% image page.header_image fill-325x206 as header_image %}
+                                    {% image page.header_image fill-600x410 as header_image %}
                                     <img src="{{ header_image.url }}" alt="" />
                                 </div>
                             </div>
@@ -113,7 +115,7 @@
                                 <div class="blog-d-one-img">
                                     {% for block in page.body %}
                                     {% if block.block_type == 'image1' %}
-                                    {% image block.value fill-310x135 as image1 %}
+                                    {% image block.value fill-950x400 as image1 %}
                                     <img src="{{ image1.url }}" alt="" />
                                     {% endif %}
                                     {% endfor %}
@@ -178,7 +180,6 @@
                                     </p>
                                     {% endif %}
                                 </div>
-                                <br>
                                 {% tags_list %}
                             </div>
                             
@@ -199,88 +200,5 @@
     </div>
 
     <!--end blog-detail-->
-
-     <!--Comment-Start-->
-     <div class="Blog-section ourmvv pt-70 pb-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="comment-re">
-                        <h2>Comment</h2>
-                        <div class="list-com">
-                            <div class="comment-b-show">
-                                <span class="img-user-co">
-                                    <img src="images/author-thumb-3.jpg" alt="" />
-                                </span>
-                                <div class="comment-b">
-                                    <button class="reply-com"><i class="fa fa-reply"></i></button>
-                                    <h4>Alina Kelian</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                </div>
-                            </div>
-                            <div class="comment-b-reply">
-                                <span class="img-user-co">
-                                    <img src="images/author-thumb-3.jpg" alt="" />
-                                </span>
-                                <div class="comment-b">
-                                    <button class="reply-com"><i class="fa fa-reply"></i></button>
-                                    <h4>Alina Kelian</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-com">
-                            <div class="comment-b-re">
-                                <span class="img-user-co">
-                                    <img src="images/author-thumb-3.jpg" alt="" />
-                                </span>
-                                <div class="comment-b">
-                                    <button class="reply-com"><i class="fa fa-reply"></i></button>
-                                    <h4>Alina Kelian</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="view-all">
-                            <a href="#" class="btn upcase">
-                                View All Comments <i class="fa fa-arrow-right"></i>
-
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="comment-re post-com">
-                        <h2>Comment Post</h2>
-                        <p>Your email address will not be published. Required fields are marked <span class="red">*</span></p>
-                        <form method="post">
-                            <div class="form-group">
-                                <input type="text" placeholder="Name" class="form-control form-com" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="Email" class="form-control form-com" />
-                            </div>
-                            <div class="form-group">
-                                <input type="number" maxlength="10" placeholder="Mobile" class="form-control form-com" />
-                            </div>
-                            <div class="form-group">
-                                <textarea placeholder="Message" class="form-control form-com-message "></textarea>
-                            </div>
-                            <div class="view-all">
-                                <button class="btn upcase">
-                                    Post Comment <i class="fa fa-arrow-right"></i>
-                                </button>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!--Comment-End-->
 
 {% endblock %}

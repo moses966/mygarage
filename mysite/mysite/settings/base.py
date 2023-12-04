@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "quote_request",
     "garage",
     "home",
+    "wagtailmetadata",
     "search",
     "wagtail.contrib.routable_page",
     "wagtail.contrib.forms",
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
 ]
 
 MIDDLEWARE = [
@@ -158,7 +160,7 @@ MEDIA_URL = "/media/"
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "mysite"
+WAGTAIL_SITE_NAME = "Roalink Garage"
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
@@ -172,5 +174,5 @@ WAGTAILSEARCH_BACKENDS = {
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
 
-#LOGIN_REDIRECT_URL = '/home'
+# LOGIN_REDIRECT_URL = '/home'
 

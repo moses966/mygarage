@@ -75,50 +75,51 @@
         </div>
     </div>
     <!--About-End-->
-    <!--Best Services-Start-->
-    <div class="min-section min-section-ser pt-90 pb-90 cr-bg">
-        <img src="/static/images/ser-b.png" alt="" class="po-img alltuchtopdown"/>
+    <!-- Blog-Start -->
+    <div class="Blog-section pt-90 pb-60">
         <div class="container">
-            <div class="right-text ">
-                <h4 class="upcase linetext pl-70">Best Services</h4>
-                <h2>
-                    {{ page.description|richtext }}
-                </h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-t">
+                        <h2>From Our Blog</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipiscing
+                        </p>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="box-list mt-25">
-                <div class="row">
-                    {% for post in posts %}
-                    <div id="owl-demo5" class="owl-demo5 owl-carousel owl-theme pl-20 pr-20">
-                        <div class="item">
-                            <div class="box-con box-ser-l">
-                                <span class="img-b">
-                                    {% image post.header_image original as header_image %}
-                                    <img src="{{ header_image.url }}" alt="">
-                                </span>
-                                {% with blocks=post.body %}
-                                {% for block in blocks %}
-                                {% if block.block_type == 'body_class' %}
-                                <span class="num">{{ block.value.post_number }}</span>
-                                <div class="dis-con mt-20">
-                                    <h3>
-                                        {{ block.value.heading }}
-                                    </h3>
-                                    <p> {{ block.value.core_intro }} </p>
-                                    <a href="{% pageurl post %}">Read More...</a>
-                                </div>
-                                {% endif %}
-                                {% endfor %}
-                                {% endwith %}
-                            </div>
+            <div class="row pt-40">
+                {% for post in posts %}
+                <div class="col-md-4 pl-30 pt-30 pb-30 pr-30">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <a href="{% pageurl post %}">
+                                {% image post.header_image fill-350x300 as image %}
+                                <img src="{{ image.url }}" alt="" />
+                            </a>
                         </div>
+                        {% with blocks=post.body %}
+                        {% for block in blocks %}
+                        {% if block.block_type == 'body_class' %}
+                        <div class="blog-con">
+                            <ul class="top-b">
+                                <li>Roadlink</li>
+                            </ul>
+                            <h4><a href="{% pageurl post %}">{{ block.value.heading }}</a></h4>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-    <!--Best Services-End-->
+    <!-- Blog-End -->
     <!--CarHub Consulting- Start-->
     <div class="about consulting-over pt-30 pb-30 pd-b-0">
         <div class="container">

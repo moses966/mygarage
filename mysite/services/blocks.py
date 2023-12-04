@@ -22,11 +22,10 @@ class SecondServiceBlock(StructBlock):
 
 class BodyBlock(StructBlock):
     heading = blocks.CharBlock(max_length=30)
-    core_intro = blocks.CharBlock(max_length=120)
     intro = blocks.RichTextBlock()
     image1 = ImageChooserBlock()
     paragraph1 = blocks.RichTextBlock()
-    paragraph2 = blocks.RichTextBlock()
+    paragraph2 = blocks.TextBlock()
     thought1 = blocks.RichTextBlock()
     thought2 = blocks.RichTextBlock()
     paragraphs = blocks.RichTextBlock()

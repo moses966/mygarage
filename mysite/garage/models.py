@@ -2,6 +2,7 @@ from django.db import models
 from django.shortcuts import render
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.models import Page
+from wagtailmetadata.models import MetadataPageMixin
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from taggit.models import Tag as TaggitTag, TaggedItemBase
 from wagtail.snippets.models import register_snippet
@@ -61,7 +62,7 @@ class BlogPage(RoutablePageMixin, Page):
         context['posts'] = self.posts
         return context
 
-class PostPage (Page):
+class PostPage (MetadataPageMixin, Page):
     header_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL , related_name="+")
     tags = ClusterTaggableManager(through= "PostPageTags", blank=True)
     body = StreamField([

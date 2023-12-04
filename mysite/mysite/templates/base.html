@@ -7,8 +7,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>CarHub - Auto Mechanic & Car Service Template</title>
-    <meta name="description" content="">
+    {% block meta_tag %}
+    <title>
+      {% block title %}
+        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+      {% endblock %}
+      {% block title_suffix %}
+        {% with self.get_site.site_name as site_name %}
+          {% if site_name %}- {{ site_name }}{% endif %}
+        {% endwith %}
+      {% endblock %}
+    </title>
+    <meta name="description" content="{{ page.search_description }}" />
+    {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
@@ -51,8 +62,8 @@
                     <div class="col-md-7">
                         <div class="header-top-contact">
                             <ul>
-                                <li><a href="tel:+1(817)9013377"><i class="fa fa-phone"></i> +1 (817) 901 3377</a></li>
-                                <li><a href="#"><i class="fa fa-map-marker"></i> 4500 Mercantile plaza,  TX, 76137, USA</a></li>
+                                <li><a href="tel:+1(817)9013377"><i class="fa fa-phone"></i> +256 700 941 509 </a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i> Nakaloke II upper ward, along Kumi-Soroti Road, Mbale </a></li>
                             </ul>
                         </div>
                     </div>
@@ -88,25 +99,11 @@
                                 </div>
                                 <div class="navbar-wrap main-menu d-none d-lg-flex">
                                     <ul class="navigation">
-                                        <li class="active menu-item-has-children">
-                                            <a href="/home">Home</a>
-                                            <ul class="submenu">
-                                                <li><a href="/home">Back to Home</a></li>
-                                            </ul>                                       
+                                        <li>
+                                            <a href="/home">Home</a>                                       
                                         </li>
                                         <li><a href="/about-us">About Us</a></li>
                                         <li><a href="/services">Services</a></li>
-                                        <!--
-                                        <li class="menu-item-has-children">
-                                            <a href="javascript:void(0)">Pages</a>
-                                            <ul class="submenu">
-                                                <li><a href="multi-header.html">Multi Type Header</a></li>
-                                                <li><a href="multi-footer.html">Multi Type Footer</a></li>
-                                                <li><a href="typography.html">Typography</a></li>
-                                            </ul>
-
-                                        </li>
-                                    -->
                                         <li><a href="/our-blog">Blogs</a></li>
                                         <li><a href="/contact-us">contacts</a></li>
                                     </ul>
@@ -129,17 +126,20 @@
                             <nav class="menu-box">
                                 <div class="close-btn"><i class="fa fa-times"></i></div>
                                 <div class="nav-logo">
-                                    <a href="/home"><img src="images/header-logo.png" alt="" title=""></a>
+                                    <a href="/home">
+                                        {% display_index_images "logo" as index_image %}
+                                         {% if index_image %}
+                                          {% image index_image.image fill-204x63 %}
+                                         {% endif %}
+                                    </a>
                                 </div>
                                 <div class="menu-outer">
 
                                 </div>
                                 <div class="social-links">
                                     <ul class="clearfix">
-                                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                        <li><a href="#" class="twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
                                         <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-instagram"></span></a></li>
                                         <li><a href="#"><span class="fa fa-youtube"></span></a></li>
                                     </ul>
                                 </div>
@@ -166,10 +166,10 @@
                 <div class="col-md-10 offset-md-1">
                     <div class="contact-btn">
                         <h2>
-                            Get Premium Auto Car Service Feel<br> Free To Contact Us.
+                            Get Premium Auto Car Service. Feel<br> Free To Contact Us.
                         </h2>
                         <a href="/contact-us" class="btn blue-btn">
-                            Contact With Us <i class="fa fa-arrow-right"></i>
+                            Contact Us <i class="fa fa-arrow-right"></i>
                             <span style="top: 176.578px; left: 137.5px;"></span>
                         </a>
                     </div>
@@ -182,13 +182,13 @@
                     <div class="footer-cont footer-logo">
                         <span class="logo-f mar-top">
                             <a href="#">
-                                {% display_index_images "logo" as index_image %}
+                                {% display_index_images "footer-logo1" as index_image %}
                                   {% if index_image %}
-                                    {% image index_image.image fill-330x113 %}
+                                    {% image index_image.image fill-401x138 %}
                                   {% endif %}
                             </a>
                         </span>
-                        <p>Welcome to our business consulting company. Lorem ipsum simply free text dolor sited amet cons cing elit.</p>
+                        <p>Thank you for choosing Roadlink Garage. Your satisifaction is our priority.</p>
                         <ul class="social-m-footer">
                             <li><a href="#" class="facebook"><i class="fa fa-facebook-f"></i></a></li>
                             <li><a href="#" class="twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -200,16 +200,12 @@
                     <div class="footer-cont footer-logo mt-20">
                         <h3>Explore</h3>
                         <ul class="menu-footer wi-50">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Meet Our Team</a></li>
-                            <li><a href="#">Our Portfolio</a></li>
-                            <li><a href="#">Latest News</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="/about-us">About us</a></li>
+                            <li><a href="/contact-us">Meet Our Team</a></li>
+                            <li><a href="/services">services</a></li>
+                            <li><a href="/our-blog">Our blog</a></li>
+                            <li><a href="/contact-us">Contact</a></li>
 
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms Of Use</a></li>
-                            <li><a href="#">Help</a></li>
                         </ul>
 
                     </div>
@@ -218,9 +214,9 @@
                     <div class="footer-cont footer-logo mt-20">
                         <h3>Contact</h3>
                         <ul class="menu-footer wi-100">
-                            <li><span><i class="fa fa-map-marker"></i></span> 4500 Mercantile plaza, Suite 300, Fort Worth, TX, 76137, USA</li>
-                            <li><span><i class="fa fa-phone"></i></span> +1 (817) 901 3377</li>
-                            <li><span><i class="fa fa-envelope-o"></i></span> info@example.com</li>
+                            <li><span><i class="fa fa-map-marker"></i></span> Nakaloke II  upper ward, along Kumi-Soroti Road, Mbale </li>
+                            <li><span><i class="fa fa-phone"></i></span> +256 775 429 592 </li>
+                            <li><span><i class="fa fa-envelope-o"></i></span> garageroadlink@gmail.com</li>
                         </ul>
 
                     </div>
@@ -248,7 +244,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copy-one">
-                        <p>© copyright <script type="text/javascript">var year = new Date(); document.write(year.getFullYear());</script> by <a href="#">Example.com</a></p>
+                        <p>© copyright <script type="text/javascript">var year = new Date(); document.write(year.getFullYear());</script> by <a href="/contact-us">Roadlink, Mbale</a></p>
                     </div>
                 </div>
             </div>
