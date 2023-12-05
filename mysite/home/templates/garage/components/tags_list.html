@@ -1,9 +1,24 @@
 {% load wagtailroutablepage_tags %}
 
-<div class="tags-container">
-  <ul class="tags-list">
-    {% for tag in tags %}
-      <li class="tag-item"><i class="fa fa-tag"></i> {{ tag }}</li>
-    {% endfor %}
-  </ul>
+
+<div class="bg-gray-100 text-gray-900 px-6 py-4">
+    <h4 class="text-base font-medium inline" style="margin-left: 20px;">Tags:</h4>
 </div>
+<div class="categories-container">
+    <ul class="row-list inline">
+        {% for tag in tags %}
+        <li class="tag-item"><i class="fa fa-tag"></i> <a href="{% routablepageurl blog_page 'post_by_tag' tag.slug %}"> {{ tag }} </a></li>
+        {% endfor %}
+      </ul>
+
+
+<script>
+    const rowList = document.querySelector('.row-list');
+    const listItems = rowList.querySelectorAll('li');
+
+    listItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            event.target.classList.toggle('selected');
+        });
+    });
+</script>

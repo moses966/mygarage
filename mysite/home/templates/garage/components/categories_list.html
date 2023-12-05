@@ -1,17 +1,29 @@
 {% load wagtailroutablepage_tags %}
 
-<div class="side-nav-categories">
-    <div class="title"><strong>Categories</strong></div>
-    <br>
-    {% if categories %}
-    <ul id="category-tabs">
-            <ul class="sub-category-tabs">
-                {% for category in categories %}
-                <li><i class="fa fa-css3"></i><a href="{% routablepageurl blog_page 'post_by_category' category.slug %}"> {{ category.name }} </a></li>
-                {% endfor %}
-            </ul>
-            {% else %}
-            <p> No categories yet! </p>
-    </ul>
-    {% endif %}
+
+<div class="bg-gray-100 text-gray-900 px-6 py-4">
+    <h4 class="text-base font-medium inline" style="margin-left: 20px;">Categories:</h4>
 </div>
+<div class="categories-container">
+    {% if categories %}
+    <ul class="row-list inline">
+        {% for category in categories %}
+        <li><i class="fa fa-css3"></i><a href="{% routablepageurl blog_page 'post_by_category' category.slug %}"> {{ category.name }} </a></li>
+        {% endfor %}
+        {% else %}
+        <p> No categories yet! </p>
+      </ul>
+      {% endif %}
+      
+</div>
+
+<script>
+    const rowList = document.querySelector('.row-list');
+    const listItems = rowList.querySelectorAll('li');
+
+    listItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            event.target.classList.toggle('selected');
+        });
+    });
+</script>

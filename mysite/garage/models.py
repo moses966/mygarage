@@ -27,7 +27,7 @@ class BlogPage(RoutablePageMixin, Page):
     def get_context(self, request, *args, **kwargs):
         context = super(BlogPage, self).get_context(request, *args, **kwargs)
         # Add the blog page and the posts to the context
-        context['blog_page'] = self
+        # context['blog_page'] = self
         context['posts'] = self.posts
         return context
     
@@ -58,7 +58,7 @@ class BlogPage(RoutablePageMixin, Page):
     # Define another method to get the context for rendering the blog page
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context['blog_page'] = self
+        # context['blog_page'] = self
         context['posts'] = self.posts
         return context
 
@@ -88,7 +88,7 @@ class PostPage (MetadataPageMixin, Page):
     # Define a method to get the context for rendering the post page
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context['blog_page'] = self.get_parent().specific
+        # context['blog_page'] = self.get_parent().specific
 
         # Add similar posts based on category to the context
         context['similar_posts'] = self.get_similar_posts()

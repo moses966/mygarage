@@ -8,9 +8,11 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.contrib.sitemaps.views import sitemap
+from django.views import defaults as default_views
 
 from search import views as search_views
-import garage.views 
+from garage.views import RobotsView
+
 
 urlpatterns = [
     path("django-admin/", admin.site.urls),
@@ -18,7 +20,7 @@ urlpatterns = [
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
     path('sitemap.xml', sitemap),
-    path('robots.txt', garage.views.RobotsView.as_view()),
+    path('robots.txt', RobotsView.as_view(), name='robots'),
 
     # URL pattern to redirect the root URL to '/home/'
     path('', RedirectView.as_view(url='/home/', permanent=False)),
@@ -32,6 +34,11 @@ if settings.DEBUG:
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    urlpatterns = [
+        path('404/', default_views.page_not_found, kwargs={'exception': Exception("Page not Found")}),
+        path('500/', default_views.server_error),
+    ] + urlpatterns
 
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to
