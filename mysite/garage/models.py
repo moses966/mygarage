@@ -62,18 +62,20 @@ class BlogPage(RoutablePageMixin, Page):
         context['posts'] = self.posts
         return context
 
+# added metatdata functionality to PostPage class
 class PostPage (MetadataPageMixin, Page):
     header_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL , related_name="+")
     tags = ClusterTaggableManager(through= "PostPageTags", blank=True)
     body = StreamField([
-    ('heading', blocks.CharBlock(form_classname="title")),
-    ('special_intro', blocks.CharBlock(max_length=200)),
+    ('heading', blocks.TextBlock(form_classname="title")),
+    ('special_intro', blocks.TextBlock(max_length=200)),
     ('published_at', blocks.DateBlock(required='True')),
-    ('paragraph1', blocks.RichTextBlock()),
+    ('paragraph1', blocks.TextBlock(max_length=210, min_length=200)),
     ('image1', ImageChooserBlock()),
-    ('quotation', blocks.RichTextBlock()),
-    ('mini_para', blocks.RichTextBlock()),
-    ('paragraphs', blocks.RichTextBlock()),
+    ('quotation', blocks.TextBlock()),
+    ('mini_para', blocks.TextBlock()),
+    ('paragraphs', blocks.TextBlock()),
+    ('caption_display_text', blocks.TextBlock(max_length=85)),
     ], block_counts={
         'heading': {'min_num': 1},
         'paragraphs': {'max_num': 1 },

@@ -133,7 +133,7 @@
                                     {% endif %}
                                     {% endfor %}
 
-                                    {% categories_list %}
+                              <!--     {# {% categories_list %} #}  categories disabled-->
                                 </div>
                             </div>
                         </div>
@@ -163,24 +163,34 @@
                                         {% for block in post.body %}
                                         {% if block.block_type == 'heading' %}
                                         <h3><a href="{{ post.url }}">{{ block.value }}</a></h3>
-                                        {% elif block.block_type == 'mini_para' %}
+                                        {% elif block.block_type == 'caption_display_text' %}
                                         <p>{{ block.value }}</p>
                                         <span class="blog-cont-tr-detail"></span>
                                         {% endif %}
                                         {% endfor %}
                                         {% endfor %}
                                     </div>
-                                    <div class="blog-img-one" data-image="images/b1.png">
+                                    {% for post in similar_posts %}
+                                        {% for block in post.body %}
+                                        {% if block.block_type == 'image1' %}
+                                        {% image block.value fill-600x400 as image1 %}
+                                    <div class="blog-img-one" data-image="{{ image1.url }}">
                                         <a href="blog-details.html">
                                         </a>
                                     </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+
                                     {% else %}
                                     <p>
                                         No similar blogs yet
                                     </p>
                                     {% endif %}
                                 </div>
-                                {% tags_list %}
+                            <!--    <div style="margin-bottom: 20px;">
+                              {#  {% tags_list %} #}
+                                </div> -->
                             </div>
                             
                             <div class="col-md-12 mb-10">
