@@ -19,11 +19,11 @@
             <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner_one1.jpg)">
                 <div class="content-slider">
                     <h1>
-                        {{ block.value.heading1 }}
+                        {{ block.value.heading1|linebreaksbr }}
                     </h1>
-                    <p> {{ block.value.text1 }} </p>
+                    <p> {{ block.value.text1|linebreaksbr }} </p>
                     <a href="#" class="btn ">
-                        View our services <i class="fa fa-arrow-right"></i>
+                        Contact Us <i class="fa fa-arrow-right"></i>
                         <span style="top: 213.5px; left: 50.6406px;"></span>
                     </a>
                 </div>
@@ -31,9 +31,9 @@
             <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner_two2.jpg)">
                 <div class="content-slider animated fadeInLeft animate__delay-2s">
                     <h1>
-                        {{ block.value.heading2 }}
+                        {{ block.value.heading2|linebreaksbr }}
                     </h1> 
-                    <p> {{ block.value.text2 }} </p>
+                    <p> {{ block.value.text2|linebreaksbr }} </p>
                     <a href="#" class="btn ">
                         View our services <i class="fa fa-arrow-right"></i>
                         <span style="top: 213.5px; left: 50.6406px;"></span>
@@ -43,9 +43,9 @@
             <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner_three3.jpg)">
                 <div class="content-slider">
                     <h1>
-                        {{ block.value.heading3 }}
+                        {{ block.value.heading3|linebreaksbr }}
                     </h1>
-                    <p> {{ block.value.text3 }} </p>
+                    <p> {{ block.value.text3|linebreaksbr }} </p>
                     <a href="#" class="btn ">
                         View our services <i class="fa fa-arrow-right"></i>
                         <span style="top: 213.5px; left: 50.6406px;"></span>
@@ -76,14 +76,14 @@
                          {% endif %}
                         
                         <div class="min-bg alltuchtopdown">
-                            <h1>25+</h1>
+                            <h1>15+</h1>
                             <h3>Years of Experience</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 pt-50 pl-60 pr-30">
                     <div class="right-text">
-                        <h4 class="upcase linetext pl-70">About CarHub</h4>
+                        <h4 class="upcase linetext pl-70">About Roadlink</h4>
                         {% with blocks=page.featured %}
                         {% for block in blocks %}
                         {% if block.block_type == 'home1' %}
@@ -96,7 +96,7 @@
                             <div class="com-one">
                                 <span class="left-side-icon">
                                     {% image block.value.image1 original as image %}
-                                    <img src="{{ image.url }}" alt="" />
+                                    <img src="{{ image.url }}" alt="" loading="lazy" />
                                 </span>
                                 <div class="right-side-text">
                                     <h3> {{ block.value.sub_header1 }} </h3>
@@ -106,7 +106,7 @@
                             <div class="com-one mt-20">
                                 <span class="left-side-icon orange">
                                     {% image block.value.image2 original as image %}
-                                    <img src="{{ image.url }}" alt="" />
+                                    <img src="{{ image.url }}" alt="" loading="lazy" />
                                 </span>
                                 <div class="right-side-text">
                                     <h3> {{ block.value.sub_header2 }} </h3>
@@ -118,22 +118,11 @@
                             {% endwith %}
                             <div class="button-section mt-25">
                                 <a href="/contact-us" class="btn orange-btn">
-                                    More About <i class="fa fa-arrow-right"></i>
+                                    More About Us <i class="fa fa-arrow-right"></i>
                                     <span style="top: 174.5px; left: 104.141px;"></span>
                                 </a>
-                                <!--
-                                <span class="video-play">
-                                    <a href="https://www.youtube.com/watch?v=pZVdQLn_E5w" class="btn play-video orange-btn ml-20 popup-youtube">
-                                        <i class="fa fa-play"></i>
-                                        <span style="top: 174.5px; left: 104.141px;"></span>
-                                    </a>
-                                    Play Video
-                                </span>
-                            -->
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -208,11 +197,11 @@
         <img src="{{ MEDIA_URL }}dev_images/right-cr-bg.png" alt="" class="po-img alltuchtopdown" />
         <div class="container">
             <div class="right-text ">
-                <h4 class="upcase linetext pl-70">Featuews CarHubs</h4>
+                <h4 class="upcase linetext pl-70">Features</h4>
                 <h2>
-                    Features that you are CarHub
+                    Roadlink Garage's Unique Features
                 </h2>
-                <h5>Lorem ipsum dolor sit amet consectetur adipiscing</h5>
+                <h5>Explore Roadlink’s standout features for unmatched automotive excellence.</h5>
 
             </div>
 
@@ -222,10 +211,10 @@
                         <div class="po-text alltuchtopdown">
                             <h3>
                                 Best
-                                CarHub
+                                Roadlink
                                 Feature
                             </h3>
-                            <p>Lorem Ipsum, giving information on its origins.</p>
+                            <p>Your satisfaction is our priority.</p>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -235,7 +224,7 @@
                             <div class="col-md-3">
                                 <div class="img-box">
                                     {% image block.value.specific.header_image fill-350x525 as header_image %} 
-                                    <img src="{{ header_image.url }}" alt="" />
+                                    <img src="{{ header_image.url }}" alt="" loading="lazy" />
                                     <a href="{{ block.value.specific.url }}" class="btn play-video d-button orange-btn ml-20 po-t-r">
                                         <i class="fa fa-arrow-right"></i>
                                         <span style="top: 174.5px; left: 104.141px;"></span>
@@ -266,10 +255,10 @@
                     <div class="img-con before-ani">
                         {% display_index_images "engine" as index_image %}
                          {% if index_image %}   
-                            {% image index_image.image scale-100 %}
+                            {% image index_image.image fill-412x600 %}
                          {% endif %}
                         <div class="po-con alltuchtopdown">
-                            <h3>We provide Solutions to grow Your business</h3>
+                            <h3>We provide Solutions to all your car needs.</h3>
                         </div>
                     </div>
                 </div>
@@ -297,7 +286,7 @@
                             <div class="com-one mt-20">
                                 <span class="left-side-icon tran-bg">
                                     {% image block.value.image2 original as image %}
-                                    <img src="{{ image.url }}" alt="">
+                                    <img src="{{ image.url }}" alt="" loading="lazy" >
                                 </span>
                                 <div class="right-side-text b-text">
                                     <h3> {{ block.value.sub_header2 }} </h3>
@@ -329,7 +318,7 @@
         <div class="row">
             <div class="col-md-6 pt-90 pb-40 pl-70 pr-30">
                 <div class="right-text ">
-                    <h4 class="upcase linetext pl-70">Why Choose Us</h4>
+                    <h4 class="upcase linetext pl-70">What Sets Us Apart</h4>
                     {% with blocks=page.featured %}
                     {% for block in blocks %}
                     {% if block.block_type == 'home3' %}
@@ -343,7 +332,7 @@
                         <div class="bg-sec-list mt-45">
                             <span class="l-img">
                                 {% image block.value.image1 original as image %}
-                                <img src="{{ image.url }}" alt="" />
+                                <img src="{{ image.url }}" alt="" loading="lazy" />
                             </span>
                             <span class="text-w">1</span>
                             <h3> {{ block.value.sub_header1 }} </h3>
@@ -354,7 +343,7 @@
                         <div class="bg-sec-list bg-blue">
                             <span class="l-img">
                                 {% image block.value.image2 original as image %}
-                                <img src="{{ image.url }}" alt="" />
+                                <img src="{{ image.url }}" alt="" loading="lazy" />
                             </span>
                             <span class="text-w">2</span>
                             <h3> {{ block.value.sub_header2 }} </h3>
@@ -365,7 +354,7 @@
                         <div class="bg-sec-list mt-45">
                             <span class="l-img">
                                 {% image block.value.image3 original as image %}
-                                <img src="{{ image.url }}" alt="" />
+                                <img src="{{ image.url }}" alt="" loading="lazy" />
                             </span>
                             <span class="text-w">3</span>
                             <h3> {{ block.value.sub_header3 }} </h3>
@@ -382,7 +371,7 @@
                 <div class="full-img ">
                     {% display_index_images "right-side" as index_image %}
                     {% if index_image %}
-                    {% image index_image.image fill-650x645 %}
+                    {% image index_image.image fill-650x595 %}
                     {% endif %}
                 </div>
             </div>
@@ -400,7 +389,7 @@
                     <div class="heading-t">
                         <h2> {{ block.value.heading }} </h2>
                         <p>
-                            {{ block.value.intro }}
+                            {{ block.value.intro|linebreaksbr }}
                         </p>
 
                     </div>
@@ -412,7 +401,7 @@
                     <div class="how-sec">
                         <span class="before-line">
                             {% image block.value.image1 original as image %}
-                            <img src="{{ image.url }}" alt="" />
+                            <img src="{{ image.url }}" alt="" loading="lazy" />
                         </span>
                         <h4> {{ block.value.sub_header1 }} </h4>
                         <p> {{ block.value.text1 }} </p>
@@ -422,7 +411,7 @@
                     <div class="how-sec">
                         <span class="before-line">
                             {% image block.value.image2 original as image %}
-                            <img src="{{ image.url }}" alt="" />
+                            <img src="{{ image.url }}" alt="" loading="lazy" />
                         </span>
                         <h4> {{ block.value.sub_header2 }} </h4>
                         <p> {{ block.value.text2 }} </p>
@@ -432,7 +421,7 @@
                     <div class="how-sec no-be">
                         <span class="before-line">
                             {% image block.value.image3 original as image %}
-                            <img src="{{ image.url }}" alt="" />
+                            <img src="{{ image.url }}" alt="" loading="lazy" />
                         </span>
                         <h4> {{ block.value.sub_header3 }} </h4>
                         <p> {{ block.value.text3 }} </p>
@@ -454,7 +443,7 @@
                     <div class="heading-t">
                         <h2>From Our Blog</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing
+                            Get a deep dive into the Dos and Don'ts for proper car maintenance.
                         </p>
 
                     </div>
@@ -471,7 +460,7 @@
                         <div class="blog-img"> <!--Display header_image from a specific page-->
                             {% image block.value.specific.header_image fill-350x220 as header_image %}                           
                             <a href="{{ block.value.specific.url }}"> 
-                                <img src="{{ header_image.url }}" alt="" /> 
+                                <img src="{{ header_image.url }}" alt="" loading="lazy" /> 
                             </a> 
                         </div>
                         <div class="blog-con">
@@ -502,12 +491,6 @@
             </div>
         </div>
     </div>
-    <!-- Blog-End -->
-    <!--<script>
-        var leftArrowImgURL = "{% static 'images/left-arrow-small.png' %}";
-        var rightArrowImgURL = "{% static 'images/right-arrow-small.png' %}";
-    </script> -->
-    
 </div>
 
 {% endblock %}

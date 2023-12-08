@@ -19,9 +19,9 @@
                 <div class="text-center text-line">
                     <h1>Blog Details</h1>
                     <ul class="text-c">
-                        <li>Home</li>
+                        <li>Roadlink</li>
                         <li>|</li>
-                        <li class="color-t">Blog Details</li>
+                        <li class="color-t">Garage</li>
                     </ul>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                             <div class="col-md-12">
                                 <div class="blog-d-one-img">
                                     {% image page.header_image fill-600x410 as header_image %}
-                                    <img src="{{ header_image.url }}" alt="" />
+                                    <img src="{{ header_image.url }}" alt="" loading="lazy" />
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                     {% for block in page.body %}
                                     {% if block.block_type == 'image1' %}
                                     {% image block.value fill-950x400 as image1 %}
-                                    <img src="{{ image1.url }}" alt="" />
+                                    <img src="{{ image1.url }}" alt="" loading="lazy" />
                                     {% endif %}
                                     {% endfor %}
                                 </div>
@@ -132,8 +132,6 @@
                                     </p>
                                     {% endif %}
                                     {% endfor %}
-
-                              <!--     {# {% categories_list %} #}  categories disabled-->
                                 </div>
                             </div>
                         </div>
@@ -188,21 +186,16 @@
                                     </p>
                                     {% endif %}
                                 </div>
-                            <!--    <div style="margin-bottom: 20px;">
-                              {#  {% tags_list %} #}
-                                </div> -->
                             </div>
                             
                             <div class="col-md-12 mb-10">
                                 <div class="view-all">
                                     <a href="/our-blog" class="btn upcase">
                                         View All Blogs <i class="fa fa-arrow-right"></i>
-                                        
                                     </a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

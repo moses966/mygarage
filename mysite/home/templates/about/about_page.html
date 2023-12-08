@@ -13,9 +13,9 @@
                     <div class="text-center text-line">
                         <h1>About Us</h1>
                         <ul class="text-c">
-                            <li>Home</li>
+                            <li>Roadlink</li>
                             <li>|</li>
-                            <li class="color-t">About Us</li>
+                            <li class="color-t">Garage</li>
                         </ul>
                     </div>
                 </div>
@@ -74,17 +74,6 @@
                                     </div>
                                 </div>
                                 <p class="no-d-m">{{ block.value.outro }}</p>
-                                <!--
-                                <div class="button-section">
-                                    <span class="video-play m-l-0">
-                                        <a href="https://www.youtube.com/watch?v=pZVdQLn_E5w" class="btn play-video orange-btn ml-20  popup-youtube">
-                                            <i class="fa fa-play"></i>
-                                            <span style="top: 174.5px; left: 104.141px;"></span>
-                                        </a>
-                                        Play Video
-                                    </span>
-                                </div>
-                            -->
                             </div>
                         {% endif %}
                         {% endfor %}
@@ -109,7 +98,7 @@
                                     <div class="box-con">
                                         <span class="img-b">
                                          {% image block.value.image1 original as image1 %}
-                                            <img src="{{ image1.url }}" alt="" />
+                                            <img src="{{ image1.url }}" alt="" loading="lazy">
                                         </span>
                                         <span class="num">{{ block.value.number }}</span>
                                         <div class="dis-con mt-20">
@@ -142,7 +131,7 @@
                         {% if block.block_type == 'about_director' %}
                         <div class="img-dir before-ani">
                             {% image block.value.image1 original as image %}
-                            <img src="{{ image.url }}" alt="">
+                            <img src="{{ image.url }}" alt="" loading="lazy">
                         </div>
                         {% endif %}
                         {% endfor %}

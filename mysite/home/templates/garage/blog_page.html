@@ -16,9 +16,9 @@
                 <div class="text-center text-line">
                     <h1>Blog List</h1>
                     <ul class="text-c">
-                        <li>Home</li>
+                        <li>Roadlink</li>
                         <li>|</li>
-                        <li class="color-t">Blog List</li>
+                        <li class="color-t">Garage</li>
                     </ul>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                             {% if post.header_image %}
                             {% image post.header_image original as header_image %}
                             <a href="{% pageurl post %}">
-                                <img src="{{ header_image.url }}" alt="" />
+                                <img src="{{ header_image.url }}" alt="" loading="lazy" />
                             </a>
                             {% endif %}
                         </div>
@@ -72,10 +72,4 @@
         </div>
     </div>
     <!--Blog-heading-End-->
-
-
-    {% categories_list %}
-
-    {% tags_list %}
-
 {% endblock %}
