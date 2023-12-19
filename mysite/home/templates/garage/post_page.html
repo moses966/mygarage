@@ -128,7 +128,7 @@
                                     {% for block in page.body %}
                                     {% if block.block_type == 'paragraphs' %}
                                     <p>
-                                        {{ block.value }}
+                                        {{ block.value|richtext }}
                                     </p>
                                     {% endif %}
                                     {% endfor %}

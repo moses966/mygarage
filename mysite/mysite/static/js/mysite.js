@@ -175,7 +175,8 @@ $('.btn').on('mouseenter', function (e) {
         autoplayHoverPause: false,
         margin: 25,
         responsiveClass: true,
-        navText: ["<img src='./images/left-arrow-small.png'/>", "<img src='./images/right-arrow-small.png'/>"],
+        navText: ["<img src='" + leftArrowImgURL + "'/>", "<img src='" + rightArrowImgURL + "'/>"],
+
         responsive: {
             0: {
                 items: 1,
@@ -206,7 +207,8 @@ $('.btn').on('mouseenter', function (e) {
         autoplayHoverPause: false,
         margin: 25,
         responsiveClass: true,
-        navText: ["<img src='./images/left-arrow-small.png'/>", "<img src='./images/right-arrow-small.png'/>"],
+        navText: ["<img src='" + leftArrowImgURL + "'/>", "<img src='" + rightArrowImgURL + "'/>"],
+
         responsive: {
             0: {
                 items: 1,
@@ -295,7 +297,10 @@ $('#testi').owlCarousel({
         autoplayHoverPause: false,
         margin: 25,
         responsiveClass: true,
-        navText: ["<img src='./images/left-arrow-small.png'/>", "<img src='./images/right-arrow-small.png'/>"],
+        navText: [
+            "", ""
+        ],
+        
         responsive: {
             0: {
                 items: 1,
@@ -335,5 +340,3 @@ for (i = 0; i < acc.length; i++) {
 
       
 })(jQuery);
-
-

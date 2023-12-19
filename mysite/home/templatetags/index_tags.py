@@ -12,3 +12,17 @@ def display_index_images(name):
     image = index_page.gallery_image.filter(name=name).first()
     
     return image
+
+@register.simple_tag
+def display_mtn():
+    index_page = IndexPage.objects.first()
+    if index_page:
+        return index_page.mtn_contact
+    return ""
+
+@register.simple_tag
+def display_airtel():
+    index_page = IndexPage.objects.first()
+    if index_page:
+        return index_page.airtel_contact
+    return ""

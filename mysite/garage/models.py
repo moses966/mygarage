@@ -70,12 +70,11 @@ class PostPage (MetadataPageMixin, Page):
     ('heading', blocks.TextBlock(form_classname="title")),
     ('special_intro', blocks.TextBlock(max_length=200)),
     ('published_at', blocks.DateBlock(required='True')),
-    ('paragraph1', blocks.TextBlock(max_length=210, min_length=200)),
+    ('paragraph1', blocks.TextBlock(max_length=250, min_length=200)),
     ('image1', ImageChooserBlock()),
     ('quotation', blocks.TextBlock()),
     ('mini_para', blocks.TextBlock()),
     ('paragraphs', blocks.TextBlock()),
-    ('caption_display_text', blocks.TextBlock(max_length=85)),
     ], block_counts={
         'heading': {'min_num': 1},
         'paragraphs': {'max_num': 1 },

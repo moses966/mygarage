@@ -22,7 +22,7 @@
     {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon-16x16.png">
     
     <link rel="stylesheet" href="{% static 'garage/group_one.css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'garage/group_one.css/animate.min.css' %}">
@@ -61,7 +61,7 @@
                     <div class="col-md-7">
                         <div class="header-top-contact">
                             <ul>
-                                <li><a href="tel:+1(817)9013377"><i class="fa fa-phone"></i> +256 700 941 509 </a></li>
+                                <li><a href="tel:+1(817)9013377"><i class="fa fa-phone"></i> {{ display_airtel }} </a></li>
                                 <li><a href="#"><i class="fa fa-map-marker"></i> Nakaloke II upper ward, along Kumi-Soroti Road, Mbale </a></li>
                             </ul>
                         </div>
@@ -228,7 +228,7 @@
                             </div>
                         <h3>Newsletter</h3>
                         <div class="news-f">
-                            <form id="my-form-newsletter" action="subscribe.php" method="post"  class="form-event">
+                            <form id="my-form-newsletter" action="#" method="post"  class="form-event">
                                 <input type="email" name="email" placeholder="Email" class="fill form-control" />
                                 <button class="btn upcase" type="submit" name="submitnewsletter"><i class="fa fa-envelope"></i></button>
                             </form>

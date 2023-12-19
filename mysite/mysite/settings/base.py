@@ -161,7 +161,7 @@ MEDIA_URL = "/media/"
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "Roalink Garage"
+WAGTAIL_SITE_NAME = "Roadlink Garage"
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
