@@ -25,6 +25,7 @@ class IndexPage(Page):
     body = RichTextField(blank=True)
     mtn_contact = models.CharField(blank=True, max_length=30)
     airtel_contact = models.CharField(blank=True, max_length=30)
+    whatsapp_contact = models.CharField(blank=True, max_length=30)
 
     featured = StreamField([
         ('services', PageChooserBlock(required=False)),

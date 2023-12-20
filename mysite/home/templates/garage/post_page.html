@@ -103,7 +103,7 @@
                                     {% for block in page.body %}
                                     {% if block.block_type == 'mini_para' %}
                                     <p>
-                                        {{ block.value }}
+                                        {{ block.value|richtext }}
                                     </p>
                                     {% endif %}
                                     {% endfor %}
@@ -128,7 +128,7 @@
                                     {% for block in page.body %}
                                     {% if block.block_type == 'paragraphs' %}
                                     <p>
-                                        {{ block.value|richtext }}
+                                        {{ block.value|richtext|linebreaksbr }}
                                     </p>
                                     {% endif %}
                                     {% endfor %}
@@ -152,41 +152,33 @@
                             </div>
                         </div>
                         <div class="row">
+                            {% for post in similar_posts %}
                             <div class="col-md-12 mb-10">
                                 <div class="blog-box-one blog-simler-right">
-                                    {% if similar_posts %}
                                     <div class="blog-cont">
                                         <h4>Articel</h4>
-                                        {% for post in similar_posts %}
                                         {% for block in post.body %}
                                         {% if block.block_type == 'heading' %}
                                         <h3><a href="{{ post.url }}">{{ block.value }}</a></h3>
-                                        {% elif block.block_type == 'caption_display_text' %}
-                                        <p>{{ block.value }}</p>
+                                        {% elif block.block_type == 'paragraph1' %}
+                                        <p>{{ block.value|truncatechars:85 }}</p>
                                         <span class="blog-cont-tr-detail"></span>
                                         {% endif %}
                                         {% endfor %}
-                                        {% endfor %}
                                     </div>
-                                    {% for post in similar_posts %}
                                         {% for block in post.body %}
                                         {% if block.block_type == 'image1' %}
                                         {% image block.value fill-600x400 as image1 %}
                                     <div class="blog-img-one" data-image="{{ image1.url }}">
-                                        <a href="blog-details.html">
+                                        <a href="{{ post.url }}">
                                         </a>
                                     </div>
                                     {% endif %}
                                     {% endfor %}
-                                    {% endfor %}
 
-                                    {% else %}
-                                    <p>
-                                        No similar blogs yet
-                                    </p>
-                                    {% endif %}
                                 </div>
                             </div>
+                            {% endfor %}
                             
                             <div class="col-md-12 mb-10">
                                 <div class="view-all">

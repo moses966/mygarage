@@ -14,7 +14,7 @@
         <div class="container">
             <div class="col-md-8  offset-md-2">
                 <div class="text-center text-line">
-                    <h1>Blog List</h1>
+                    <h1>Articles List</h1>
                     <ul class="text-c">
                         <li>Roadlink</li>
                         <li>|</li>
@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="right-text mb-30">
-                        <h4 class="upcase linetext pl-70">Blogs Here</h4>
+                        <h4 class="upcase linetext pl-70">Articles</h4>
                         <h2>
                             {{ page.description }}
                         </h2>
@@ -44,13 +44,13 @@
                 <div class="col-md-3">
                     <div class="blog-box-one">
                         <div class="blog-cont">
-                            <h4>Articel</h4>
+                            <h4>Article</h4>
                             <!--Accessing the 'body' streamfield-->
                             {% for block in post.body %}
                             {% if block.block_type == 'heading' %}
                             <h3><a href="{% pageurl post %}">{{ block.value }}</a></h3>
                             {% elif block.block_type == 'paragraph1' %}
-                            <p>{{ block.value }}</p>
+                            <p>{{ block.value|truncatechars:145 }}</p>
                             <span class="blog-cont-tr"></span>
                             {% endif %}
                             {% endfor %}
