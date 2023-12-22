@@ -66,7 +66,7 @@
                                 and Get the<br />
                                 Best Services
                             </h2>
-                            <a href="+256 700 941 509" class="call-b"><i class="fa fa-phone"></i> +1 (817) 901 3377</a>
+                            <a href="{{ page.contact }}" class="call-b"><i class="fa fa-phone"></i> {{ page.contact }} </a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     <div class="heading-t">
                         <h2>From Our Blog</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing
+                            Have a deep look at some of our services.
                         </p>
 
                     </div>
@@ -126,7 +126,7 @@
             <div class="row">
                 <div class="col-md-6 pt-80 pr-40 pd-top-s">
                     <div class="right-text">
-                        <h4 class="upcase linetext pl-70">CarHub Services<h4>
+                        <h4 class="upcase linetext pl-70">Roadlink Services<h4>
                         {% with blocks=page.displayed %}
                         {% for block in blocks %}
                         {% if block.block_type == 'secs' %}

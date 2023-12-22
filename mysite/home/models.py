@@ -46,6 +46,7 @@ class IndexPage(Page):
         FieldPanel('featured'),
         FieldPanel('mtn_contact'),
         FieldPanel('airtel_contact'),
+        FieldPanel('whatsapp_contact'),
     ]
 
     

@@ -26,3 +26,10 @@ def display_airtel():
     if index_page:
         return index_page.airtel_contact
     return ""
+
+@register.simple_tag
+def display_whatsapp():
+    index_page = IndexPage.objects.first()
+    if index_page:
+        return index_page.whatsapp_contact
+    return ""

@@ -16,7 +16,7 @@
             {% with blocks=page.featured %}
             {% for block in blocks %}
             {% if block.block_type == 'carousel' %}
-            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner_one1.jpg)">
+            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banners1.jpg)">
                 <div class="content-slider">
                     <h1>
                         {{ block.value.heading1|linebreaksbr }}
@@ -28,7 +28,7 @@
                     </a>
                 </div>
             </div>
-            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner_two2.jpg)">
+            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banners3.jpg)">
                 <div class="content-slider animated fadeInLeft animate__delay-2s">
                     <h1>
                         {{ block.value.heading2|linebreaksbr }}
@@ -40,7 +40,7 @@
                     </a>
                 </div>
             </div>
-            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banner_three3.jpg)">
+            <div class="swiper-slide cover-background" style="background-image:url(/static/images/banners2.jpg)">
                 <div class="content-slider">
                     <h1>
                         {{ block.value.heading3|linebreaksbr }}
@@ -76,7 +76,7 @@
                          {% endif %}
                         
                         <div class="min-bg alltuchtopdown">
-                            <h1>15+</h1>
+                            <h1>20+</h1>
                             <h3>Years of Experience</h3>
                         </div>
                     </div>
@@ -231,8 +231,8 @@
                                     </a>
                                     {% with post=block.value.specific.body %}   <!--accessing the body block-->
                                     {% for block1 in post %}
-                                    {% if block1.block_type == 'heading' %}
-                                    <a href="{{ block.value.specific.url }}" class="f-name">{{ block1.value }}</a>
+                                    {% if block1.block_type == 'body_class' %}
+                                    <a href="{{ block.value.specific.url }}" class="f-name">{{ block1.value.heading }}</a>
                                     {% endif %}
                                     {% endfor %}
                                     {% endwith %}

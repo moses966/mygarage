@@ -12,6 +12,7 @@ from .blocks import FirstServiceBlock, SecondServiceBlock, BodyBlock
 
 class ServiceBlogPage(RoutablePageMixin, Page):
     description = RichTextField(max_length=60, help_text='Each sentence should have a max of 19 characters')
+    contact = models.CharField(max_length=30, blank=True)
     displayed = StreamField([
         ('firsts', FirstServiceBlock()),
         ('secs', SecondServiceBlock()),
@@ -20,6 +21,7 @@ class ServiceBlogPage(RoutablePageMixin, Page):
     content_panels = Page.content_panels + [
         FieldPanel("description"),
         FieldPanel('displayed'),
+        FieldPanel('contact'),
     ]
 
     # Define a method to get the context for rendering the blog page
@@ -51,7 +53,7 @@ class ServiceBlogPage(RoutablePageMixin, Page):
 class ServicePostPage(Page):
     header_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL , related_name="+")
     body = StreamField([
-        ('body_class',BodyBlock()),
+        ('body_class', BodyBlock()),
     ], use_json_field=True)
 
     content_panels = Page.content_panels + [
